@@ -1,7 +1,4 @@
-<!DOCTYPE html>
-<html>
-<?php include('_head.php') ?>
-<body>
-    
-</body>
-</html>
+<?php
+    $content = 'Placeholder'; // Put html here.
+    require('master.php');
+?>
