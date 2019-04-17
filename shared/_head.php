@@ -10,7 +10,7 @@
     <title><?php echo($title) ?> - Coffee Buzz</title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="stylesheet" href="stylesheets/main.css">
+    <link rel="stylesheet" href="assets/css/main.css">
 
     <!-- Bootstrap -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
