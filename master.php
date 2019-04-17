@@ -1,9 +1,9 @@
 <!DOCTYPE html>
 <html>
-<?php require('_head.php'); ?>
+<?php require('shared/_head.php'); ?>
 <body>
-    <?php include('_header.php'); ?>
-    <div class='container'><?php echo($content); ?></div>
-    <?php include('_footer.php'); ?>
+    <?php include('shared/_header.php'); ?>
+    <main class='container' role='main'><?php echo($content); ?></main>
+    <?php include('shared/_footer.php'); ?>
 </body>
 </html>
