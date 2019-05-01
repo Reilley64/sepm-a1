@@ -26,3 +26,7 @@ main {
 .navbar-brand, .nav-link {
     text-transform: uppercase;
 }
+
+.form-group {
+    margin-bottom: 0 !important;
+}

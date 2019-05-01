@@ -10,5 +10,5 @@ $twig = new \Twig\Environment($loader, [
 $database = new Database();
 $data = $database->select("SELECT * FROM menu WHERE type = 'DRINK';");
 
-$template = $twig->load('drinks.html.twig');
+$template = $twig->load('menu.html.twig');
 echo $template->render(["title" => "Drinks Menu - ", "pageHeader" => "Drinks", "menu" => $data]);
