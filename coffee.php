@@ -8,7 +8,7 @@ $twig = new \Twig\Environment($loader, [
 ]);
 
 $database = new Database();
-$data = $database->select("SELECT * FROM menu WHERE type = 'DRINK';");
+$data = $database->select("SELECT * FROM menu WHERE type = 'COFFEE' ORDER BY name;");
 
 $template = $twig->load('menu.html.twig');
-echo $template->render(["title" => "Drinks Menu - ", "pageHeader" => "Drinks", "menu" => $data]);
+echo $template->render(["title" => "Coffee Menu - ", "pageHeader" => "Coffee", "menu" => $data]);
