@@ -6,5 +6,5 @@ $twig = new \Twig\Environment($loader, [
     'cache' => false,
 ]);
 
-$template = $twig->load('menu.html.twig');
-echo $template->render();
+$template = $twig->load('food.html.twig');
+echo $template->render(["pageHeader" => "Food"]);
