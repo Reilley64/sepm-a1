@@ -5,28 +5,28 @@ class Database
 
     public function __construct()
     {
-        $this->$connection = new mysqli('us-cdbr-iron-east-02.cleardb.net', 'b6f2dc62df28b0', 'fa6c774d', 'heroku_2d9257028881513');
+        $this->$connection = new mysqli('us-cdbr-iron-east-03.cleardb.net', 'bb7eebe8e43a41', '5028cdab', 'heroku_7c5b74577fd439b');
         
-        if ($connection->connect_error) {
-            die("Connection failed: " . $connection->connect_error);
+        if ($this->$connection->connect_error) {
+            die("Connection failed: " . $this->$connection->connect_error);
         }
     }
 
     public function delete($sql)
     {
-        if ($connection->query($sql) === true) {
-            echo("<script>console.log('Record deleted.')</script>");
+        if ($this->$connection->query($sql) === true) {
+            return true;
         } else {
-            echo("<script>console.log('Error: " . $connection->error . "')</script>");
+            return $this->$connection->error;
         }
     }
 
     public function insert($sql)
     {
-        if ($connection->query($sql) === true) {
-            echo("<script>console.log('New record created.')</script>");
+        if ($this->$connection->query($sql) === true) {
+            return true;
         } else {
-            echo("<script>console.log('Error: " . $connection->error . "')</script>");
+            return $this->$connection->error;
         }
     }
 

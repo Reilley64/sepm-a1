@@ -6,5 +6,5 @@ $twig = new \Twig\Environment($loader, [
     'cache' => false,
 ]);
 
-$template = $twig->load('index.html.twig');
+$template = $twig->load('menu.html.twig');
 echo $template->render();
