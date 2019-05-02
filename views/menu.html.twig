@@ -57,7 +57,7 @@
                               name="{{ item.name }}"
                               id="{{ item.name }}{{ size }}"
                               value="{{ size }}"
-                              onclick="radioChange({{ item|json_encode }})"
+                              onclick="radioChange({{ item | json_encode }})"
                               checked
                             />
                             {% else %}
@@ -67,7 +67,7 @@
                               name="{{ item.name }}"
                               id="{{ item.name }}{{ size }}"
                               value="{{ size }}"
-                              onclick="radioChange({{ item|json_encode }})"
+                              onclick="radioChange({{ item | json_encode }})"
                             />
                             {% endif %}
                             <label
