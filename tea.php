@@ -11,4 +11,4 @@ $database = new Database();
 $data = $database->select("SELECT * FROM menu WHERE type = 'TEA' ORDER BY name;");
 
 $template = $twig->load('menu.html.twig');
-echo $template->render(["title" => "Tea Menu - ", "pageHeader" => "Tea", "menu" => $data]);
+echo $template->render(["file" => $_SERVER['PHP_SELF'], "title" => "Tea Menu - ", "pageHeader" => "Tea", "menu" => $data]);
