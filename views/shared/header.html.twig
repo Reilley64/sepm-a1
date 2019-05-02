@@ -8,64 +8,58 @@
             <ul class="navbar-nav ml-auto">
                 {% if file == '/menu.php' or file == '/coffee.php' or file == '/tea.php' or file == '/food.php' %}
                 <li class="nav-item active dropdown">
-                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
-                        data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                        Menu
-                    </a>
-                    <div class="dropdown-menu dropdown-menu-right text-center text-uppercase"
-                        aria-labelledby="navbarDropdown">
-                        {% if file == '/coffee.php' %}
-                        <a class="dropdown-item active" href="coffee.php">Coffee</a>
-                        {% else %}
-                        <a class="dropdown-item" href="coffee.php">Coffee</a>
-                        {% endif %}
-                        {% if file == '/tea.php' %}
-                        <a class="dropdown-item active" href="tea.php">Tea</a>
-                        {% else %}
-                        <a class="dropdown-item" href="tea.php">Tea</a>
-                        {% endif %}
-                        {% if file == '/food.php' %}
-                        <a class="dropdown-item active" href="food.php">Food</a>
-                        {% else %}
-                        <a class="dropdown-item" href="food.php">Food</a>
-                        {% endif %}
-                        <div class="dropdown-divider"></div>
-                        {% if file == '/menu.php' %}
-                        <a class="dropdown-item active" href="menu.php">All</a>
-                        {% else %}
-                        <a class="dropdown-item" href="menu.php">All</a>
-                        {% endif %}
+                    <div class='btn-group'>
+                        <a class="nav-link active" href="menu.php">Menu</a>
+                        <a class="nav-link dropdown-toggle dropdown-toggle-split" href="#" id="navbarDropdown"
+                            role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            <span class="sr-only">Toggle Dropdown</span>
+                        </a>
+                        <div class="dropdown-menu dropdown-menu-right text-center text-uppercase"
+                            aria-labelledby="navbarDropdown">
+                            {% if file == '/coffee.php' %}
+                            <a class="dropdown-item active" href="coffee.php">Coffee</a>
+                            {% else %}
+                            <a class="dropdown-item" href="coffee.php">Coffee</a>
+                            {% endif %}
+                            {% if file == '/tea.php' %}
+                            <a class="dropdown-item active" href="tea.php">Tea</a>
+                            {% else %}
+                            <a class="dropdown-item" href="tea.php">Tea</a>
+                            {% endif %}
+                            {% if file == '/food.php' %}
+                            <a class="dropdown-item active" href="food.php">Food</a>
+                            {% else %}
+                            <a class="dropdown-item" href="food.php">Food</a>
+                            {% endif %}
+                        </div>
                     </div>
                 </li>
                 {% else %}
                 <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
-                        data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                        Menu
-                    </a>
-                    <div class="dropdown-menu dropdown-menu-right text-center text-uppercase"
-                        aria-labelledby="navbarDropdown">
-                        {% if file == '/coffee.php' %}
-                        <a class="dropdown-item active" href="coffee.php">Coffee</a>
-                        {% else %}
-                        <a class="dropdown-item" href="coffee.php">Coffee</a>
-                        {% endif %}
-                        {% if file == '/tea.php' %}
-                        <a class="dropdown-item active" href="tea.php">Tea</a>
-                        {% else %}
-                        <a class="dropdown-item" href="tea.php">Tea</a>
-                        {% endif %}
-                        {% if file == '/food.php' %}
-                        <a class="dropdown-item active" href="food.php">Food</a>
-                        {% else %}
-                        <a class="dropdown-item" href="food.php">Food</a>
-                        {% endif %}
-                        <div class="dropdown-divider"></div>
-                        {% if file == '/menu.php' %}
-                        <a class="dropdown-item active" href="menu.php">All</a>
-                        {% else %}
-                        <a class="dropdown-item" href="menu.php">All</a>
-                        {% endif %}
+                    <div class='btn-group'>
+                        <a class="nav-link" href="menu.php">Menu</a>
+                        <a class="nav-link dropdown-toggle dropdown-toggle-split" href="#" id="navbarDropdown"
+                            role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            <span class="sr-only">Toggle Dropdown</span>
+                        </a>
+                        <div class="dropdown-menu dropdown-menu-right text-center text-uppercase"
+                            aria-labelledby="navbarDropdown">
+                            {% if file == '/coffee.php' %}
+                            <a class="dropdown-item active" href="coffee.php">Coffee</a>
+                            {% else %}
+                            <a class="dropdown-item" href="coffee.php">Coffee</a>
+                            {% endif %}
+                            {% if file == '/tea.php' %}
+                            <a class="dropdown-item active" href="tea.php">Tea</a>
+                            {% else %}
+                            <a class="dropdown-item" href="tea.php">Tea</a>
+                            {% endif %}
+                            {% if file == '/food.php' %}
+                            <a class="dropdown-item active" href="food.php">Food</a>
+                            {% else %}
+                            <a class="dropdown-item" href="food.php">Food</a>
+                            {% endif %}
+                        </div>
                     </div>
                 </li>
                 {% endif %}

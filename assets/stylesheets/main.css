@@ -30,3 +30,7 @@ main {
 .form-group {
     margin-bottom: 0 !important;
 }
+
+.btn-group a {
+    padding-right: 0.25rem !important;
+}
