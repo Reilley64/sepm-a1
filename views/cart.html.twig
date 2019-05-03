@@ -4,12 +4,12 @@
   if (cart == null) {
     cart = [];
   }
-  
+
   var menu = {{ menu|json_encode|raw }};
 
   function clearItem(id) {
     for (var i = 0; i < cart.length; i++){
-      if (cart[i].id == id) {
+      if (cart[i] == id) {
         cart.splice(i, 1);
         break;
       }
@@ -19,7 +19,17 @@
     location.reload();
   }
 </script>
-<div class="container" id="cart"></div>
+<div class="container">
+  <h1 class="page-header text-center text-uppercase">Cart</h1>
+  <p class="lead">
+    <script>
+      if ((cart.length == 1)) {
+        document.write(cart.length + " item");
+      } else document.write(cart.length + " items");
+    </script>
+  </p>
+  <div id="cart"></div>
+</div>
 <script>
   for (x = 0; x < cart.length; ++x) {
     var item = cart[x].toString().split(":");
@@ -61,9 +71,7 @@
                 </div>
               </div>
               <div class='col-1 d-flex align-items-center'>
-                <button type='button' class='close' aria-label='Close' onclick="clearItem(${
-                  cart[x].id
-                })">
+                <button type='button' class='close' aria-label='Close' onclick="clearItem('${cart[x]}')">
                   <span aria-hidden='true'>&times;</span>
                 </button>
               </div>
