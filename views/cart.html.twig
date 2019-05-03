@@ -42,7 +42,7 @@
         document.getElementById("cart").innerHTML += `
           <div class='card mt-1 mb-1'>
             <div class='row no-gutters'>
-              <div class='col-3 col-md-2'>
+              <div class='col-3 col-md-2 col-lg-1'>
                 <img src='./assets/images/${menu[y].name}.jpg' class='card-img h-100 of-cover'>
               </div>
               <div class='col d-flex align-items-center'>
@@ -50,9 +50,7 @@
                   <h5 class='card-title text-uppercase'>${itemsize} ${
           menu[y].name
         }</h5>
-                  <p class='card-text text-muted'>
-                    $${itemprice}
-                  </p>
+                  <h6 class='card-subtitle text-muted'>$${itemprice}</h6>
                 </div>
               </div>
               <div class='col-1 d-flex align-items-center'>
