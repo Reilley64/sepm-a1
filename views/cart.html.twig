@@ -1,3 +1,73 @@
 {% extends './templates/base.html.twig' %} {% block content %}
-<!-- TODO: Cart content -->
+<script>
+  var cart = JSON.parse(localStorage.getItem("cart"));
+  var menu = {{ menu|json_encode|raw }};
+
+  function clearItem(id) {
+    for (var i = 0; i < cart.length; i++){
+      if (cart[i].id == id) {
+        cart.splice(i, 1);
+        break;
+      }
+    }
+
+    localStorage.setItem("cart", JSON.stringify(cart));
+    location.reload();
+  }
+</script>
+<div class="container" id="cart"></div>
+<script>
+  for (x = 0; x < cart.length; ++x) {
+    var item = cart[x].toString().split(":");
+    for (y = 0; y < menu.length; ++y) {
+      if (item[0] == menu[y].id) {
+        var itemprice = menu[y].sprice;
+
+        switch (item[1]) {
+          case "S":
+            var itemsize = "small";
+            itemprice = menu[y].sprice;
+            break;
+
+          case "M":
+            var itemsize = "medium";
+            itemprice = menu[y].mprice;
+            break;
+
+          case "L":
+            var itemsize = "large";
+            itemprice = menu[y].lprice;
+            break;
+        }
+
+        document.getElementById("cart").innerHTML += `
+          <div class='card mt-1 mb-1'>
+            <div class='row no-gutters'>
+              <div class='col'>
+                <img src='./assets/images/${menu[y].name}.jpg' class='card-img'>
+              </div>
+              <div class='col-8 d-flex align-items-center'>
+                <div class='card-body'>
+                  <h5 class='card-title text-uppercase'>${itemsize} ${
+          menu[y].name
+        }</h5>
+                  <p class='card-text text-muted'>
+                    $${itemprice}
+                  </p>
+                </div>
+              </div>
+              <div class='col-1 d-flex align-items-center'>
+                <button type='button' class='close' aria-label='Close' onclick="clearItem(${
+                  cart[x].id
+                })">
+                  <span aria-hidden='true'>&times;</span>
+                </button>
+              </div>
+            </div>
+          </div>
+          `;
+      }
+    }
+  }
+</script>
 {% endblock %}
