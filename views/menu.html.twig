@@ -1,50 +1,4 @@
 {% extends './templates/base.html.twig' %} {% block content %}
-<script>
-  var cart = JSON.parse(localStorage.getItem("cart"));
-  if (cart == null) {
-    cart = [];
-  }
-
-  function addItem(item) {
-    if (typeof item == "string") {
-      item = JSON.parse(item);
-    }
-
-    var radios = document.getElementsByName(item.name);
-    for (var i = 0; i < radios.length; i++) {
-      if (radios[i].checked) {
-        cart.push(item.id + ":" + radios[i].value);
-      }
-    }
-
-    localStorage.setItem("cart", JSON.stringify(cart));
-  }
-
-  function radioChange(item) {
-    if (typeof item == "string") {
-      item = JSON.parse(item);
-    }
-
-    var radios = document.getElementsByName(item.name);
-    for (var i = 0; i < radios.length; i++) {
-      if (radios[i].checked) {
-        switch (radios[i].value) {
-          case "S":
-            document.getElementById(item.name).innerHTML = item.sprice;
-            break;
-
-          case "M":
-            document.getElementById(item.name).innerHTML = item.mprice;
-            break;
-
-          case "L":
-            document.getElementById(item.name).innerHTML = item.lprice;
-            break;
-        }
-      }
-    }
-  }
-</script>
 <div class="container">
   <h1 class="page-header text-center text-uppercase">{{ pageHeader }}</h1>
   {% block items %}
@@ -53,7 +7,7 @@
     <div class="col-sm-6 col-md-4 col-lg-3 pt-1 pb-1">
       <div class="card h-100 text-center">
         <img src="./assets/images/{{ item.name }}.jpg" class="card-img-top" />
-        <form onsubmit="addItem({{ item | json_encode }})">
+        <form onsubmit="addItem({{ item | json_encode }}); return false;">
           <div class="form-group">
             <div class="card-body">
               <h5 class="card-title text-uppercase">{{ item.name }}</h5>
@@ -62,13 +16,10 @@
                 <div class="row">
                   <div class="col">
                     <div class="row-fluid">
-                      <h6 class="text-uppercase">Sizes</h6>
-                    </div>
-                    <div class="row-fluid">
-                      <div class="col d-flex align-items-center">
-                        <div class="container-fluid">
-                          {% set sizes = item.sizes|split(', ') %} {% for size
-                          in sizes %}
+                      <div class="col">
+                        <!-- <div class="container-fluid">
+                          {% set sizes = item.sizes|split(', ') %}
+                          {% for size in sizes %}
                           <div class="form-check form-check-inline">
                             {% if size == sizes[0] %}
                             <input
@@ -97,6 +48,41 @@
                             >
                           </div>
                           {% endfor %}
+                        </div> -->
+                        <div
+                          class="btn-group btn-group-toggle"
+                          data-toggle="buttons"
+                        >
+                          {% set sizes = item.sizes|split(', ') %} {% for size
+                          in sizes %} {% if size == sizes[0] %}
+                          <label
+                            class="btn btn-outline-secondary active"
+                            onclick="radioChange({{ item | json_encode }}, '{{ size }}')"
+                          >
+                            <input
+                              type="radio"
+                              name="{{ item.name }}"
+                              id="{{ item.name }}{{ size }}"
+                              value="{{ size }}"
+                              autocomplete="off"
+                              checked
+                            />{{ size }}</input>
+                          </label>
+                          {% else %}
+                          <label
+                            class="btn btn-outline-secondary"
+                            onclick="radioChange({{ item | json_encode }}, '{{ size }}')"
+                          >
+                            <input
+                              type="radio"
+                              name="{{ item.name }}"
+                              id="{{ item.name }}{{ size }}"
+                              value="{{ size }}"
+                              autocomplete="off"
+                            />{{ size }}</input>
+                          </label>
+                          {% endif %}
+                          {% endfor %}
                         </div>
                       </div>
                     </div>
@@ -110,6 +96,9 @@
                 <div class="col d-flex align-items-center">
                   <div class="container-fluid">
                     $<span id="{{ item.name }}">{{ item.sprice }}</span>
+                    <script>
+                      radioChange({{ item|json_encode|raw }}, '{{ sizes[0] }}');
+                    </script>
                   </div>
                 </div>
                 <div class="col d-flex align-items-center">
@@ -123,11 +112,7 @@
         </form>
       </div>
     </div>
-    {% if item.sizes != null %}
-    <script>
-      radioChange({{ item|json_encode|raw }});
-    </script>
-    {% endif %} {% endif %} {% endfor %}
+    {% endif %} {% endfor %}
   </div>
   {% endblock %}
 </div>

@@ -102,13 +102,25 @@
         <li class="nav-item active">
           <a class="nav-link" href="cart.php"
             ><i class="fa fa-shopping-cart" aria-hidden="true"></i
-          ></a>
+            ><sup
+              ><span id="cartlength"></span
+              ><script>
+                updateCartLength();
+              </script></sup
+            ></a
+          >
         </li>
         {% else %}
         <li class="nav-item">
           <a class="nav-link" href="cart.php"
             ><i class="fa fa-shopping-cart" aria-hidden="true"></i
-          ></a>
+            ><sup
+              ><span id="cartlength"></span
+              ><script>
+                updateCartLength();
+              </script></sup
+            ></a
+          >
         </li>
         {% endif %}
       </ul>

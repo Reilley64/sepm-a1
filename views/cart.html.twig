@@ -1,32 +1,17 @@
 {% extends './templates/base.html.twig' %} {% block content %}
 <script>
-  var cart = JSON.parse(localStorage.getItem("cart"));
-  if (cart == null) {
-    cart = [];
-  }
-
   var menu = {{ menu|json_encode|raw }};
-
-  function clearItem(id) {
-    for (var i = 0; i < cart.length; i++){
-      if (cart[i] == id) {
-        cart.splice(i, 1);
-        break;
-      }
-    }
-
-    localStorage.setItem("cart", JSON.stringify(cart));
-    location.reload();
-  }
 </script>
 <div class="container">
   <h1 class="page-header text-center text-uppercase">Cart</h1>
   <p class="lead">
-    <script>
-      if (cart.length == 1) {
-        document.write(cart.length + " item");
-      } else document.write(cart.length + " items");
-    </script>
+    <small class="text-muted">
+      <script>
+        if (cart.length == 1) {
+          document.write(cart.length + " item");
+        } else document.write(cart.length + " items");
+      </script>
+    </small>
   </p>
   <div id="cart"></div>
 </div>
@@ -71,7 +56,9 @@
                 </div>
               </div>
               <div class='col-1 d-flex align-items-center'>
-                <button type='button' class='close' aria-label='Close' onclick="clearItem('${cart[x]}')">
+                <button type='button' class='close' aria-label='Close' onclick="clearItem('${
+                  cart[x]
+                }')">
                   <span aria-hidden='true'>&times;</span>
                 </button>
               </div>
