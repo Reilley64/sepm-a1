@@ -1,6 +1,9 @@
 {% extends './templates/base.html.twig' %} {% block content %}
 <script>
   var cart = JSON.parse(localStorage.getItem("cart"));
+  if (cart == null) {
+    cart = [];
+  }
 
   function addItem(item) {
     if (typeof item == "string") {

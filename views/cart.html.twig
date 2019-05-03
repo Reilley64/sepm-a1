@@ -1,6 +1,10 @@
 {% extends './templates/base.html.twig' %} {% block content %}
 <script>
   var cart = JSON.parse(localStorage.getItem("cart"));
+  if (cart == null) {
+    cart = [];
+  }
+  
   var menu = {{ menu|json_encode|raw }};
 
   function clearItem(id) {
