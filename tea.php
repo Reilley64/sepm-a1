@@ -9,7 +9,7 @@ $twig = new \Twig\Environment($loader, [
 
 $database = new Database();
 $data = $database->select(
-  "SELECT * FROM menu WHERE type = 'TEA' ORDER BY name;"
+    "SELECT * FROM menu WHERE type = 'TEA' ORDER BY name;"
 );
 
 $template = $twig->load('menu.html.twig');

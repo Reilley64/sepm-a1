@@ -1,6 +1,6 @@
 {% extends './templates/base.html.twig' %} {% block content %}
 <script>
-  var menu = {{ menu|json_encode|raw }};
+  var menu = {{ menu| json_encode | raw }};
 </script>
 <div class="container">
   <h1 class="page-header text-center text-uppercase">Cart</h1>
@@ -49,7 +49,7 @@
                 <div class='card-body'>
                   <h5 class='card-title text-uppercase'>${itemsize} ${
           menu[y].name
-        }</h5>
+          }</h5>
                   <p class='card-text text-muted'>
                     $${itemprice}
                   </p>
@@ -57,8 +57,8 @@
               </div>
               <div class='col-1 d-flex align-items-center'>
                 <button type='button' class='close' aria-label='Close' onclick="clearItem('${
-                  cart[x]
-                }')">
+          cart[x]
+          }')">
                   <span aria-hidden='true'>&times;</span>
                 </button>
               </div>

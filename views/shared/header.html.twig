@@ -1,12 +1,7 @@
 <header class="header">
   <nav class="navbar navbar-expand-lg navbar-light bg-light">
     <a class="navbar-brand" href="../">Coffee Buzz</a>
-    <button
-      class="navbar-toggler"
-      type="button"
-      data-toggle="collapse"
-      data-target=".navbar-collapse"
-    >
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target=".navbar-collapse">
       <span class="navbar-toggler-icon"></span>
     </button>
     <div class="navbar-collapse collapse">
@@ -16,21 +11,11 @@
         <li class="nav-item active dropdown">
           <div class="btn-group">
             <a class="nav-link active" href="menu.php">Menu</a>
-            <a
-              class="nav-link dropdown-toggle dropdown-toggle-split"
-              href="#"
-              id="navbarDropdown"
-              role="button"
-              data-toggle="dropdown"
-              aria-haspopup="true"
-              aria-expanded="false"
-            >
+            <a class="nav-link dropdown-toggle dropdown-toggle-split" href="#" id="navbarDropdown" role="button"
+              data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
               <span class="sr-only">Toggle Dropdown</span>
             </a>
-            <div
-              class="dropdown-menu dropdown-menu-right text-center text-uppercase"
-              aria-labelledby="navbarDropdown"
-            >
+            <div class="dropdown-menu dropdown-menu-right text-center text-uppercase" aria-labelledby="navbarDropdown">
               {% if file == '/coffee.php' %}
               <a class="dropdown-item active" href="coffee.php">Coffee</a>
               {% else %}
@@ -51,21 +36,11 @@
         <li class="nav-item dropdown">
           <div class="btn-group">
             <a class="nav-link" href="menu.php">Menu</a>
-            <a
-              class="nav-link dropdown-toggle dropdown-toggle-split"
-              href="#"
-              id="navbarDropdown"
-              role="button"
-              data-toggle="dropdown"
-              aria-haspopup="true"
-              aria-expanded="false"
-            >
+            <a class="nav-link dropdown-toggle dropdown-toggle-split" href="#" id="navbarDropdown" role="button"
+              data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
               <span class="sr-only">Toggle Dropdown</span>
             </a>
-            <div
-              class="dropdown-menu dropdown-menu-right text-center text-uppercase"
-              aria-labelledby="navbarDropdown"
-            >
+            <div class="dropdown-menu dropdown-menu-right text-center text-uppercase" aria-labelledby="navbarDropdown">
               {% if file == '/coffee.php' %}
               <a class="dropdown-item active" href="coffee.php">Coffee</a>
               {% else %}
@@ -100,27 +75,19 @@
         </li>
         {% endif %} {% if file == '/cart.php' %}
         <li class="nav-item active">
-          <a class="nav-link" href="cart.php"
-            ><i class="fa fa-shopping-cart" aria-hidden="true"></i
-            ><sup
-              ><span id="cartlength"></span
-              ><script>
+          <a class="nav-link" href="cart.php"><i class="fa fa-shopping-cart" aria-hidden="true"></i><sup><span
+                id="cartlength"></span>
+              <script>
                 updateCartLength();
-              </script></sup
-            ></a
-          >
+              </script></sup></a>
         </li>
         {% else %}
         <li class="nav-item">
-          <a class="nav-link" href="cart.php"
-            ><i class="fa fa-shopping-cart" aria-hidden="true"></i
-            ><sup
-              ><span id="cartlength"></span
-              ><script>
+          <a class="nav-link" href="cart.php"><i class="fa fa-shopping-cart" aria-hidden="true"></i><sup><span
+                id="cartlength"></span>
+              <script>
                 updateCartLength();
-              </script></sup
-            ></a
-          >
+              </script></sup></a>
         </li>
         {% endif %}
       </ul>

@@ -17,69 +17,19 @@
                   <div class="col">
                     <div class="row-fluid">
                       <div class="col">
-                        <!-- <div class="container-fluid">
-                          {% set sizes = item.sizes|split(', ') %}
-                          {% for size in sizes %}
-                          <div class="form-check form-check-inline">
-                            {% if size == sizes[0] %}
-                            <input
-                              class="form-check-input"
-                              type="radio"
-                              name="{{ item.name }}"
-                              id="{{ item.name }}{{ size }}"
-                              value="{{ size }}"
-                              onclick="radioChange({{ item | json_encode }})"
-                              checked
-                            />
-                            {% else %}
-                            <input
-                              class="form-check-input"
-                              type="radio"
-                              name="{{ item.name }}"
-                              id="{{ item.name }}{{ size }}"
-                              value="{{ size }}"
-                              onclick="radioChange({{ item | json_encode }})"
-                            />
-                            {% endif %}
-                            <label
-                              class="form-check-label"
-                              for="{{ item.name }}{{ size }}"
-                              >{{ size }}</label
-                            >
-                          </div>
-                          {% endfor %}
-                        </div> -->
-                        <div
-                          class="btn-group btn-group-toggle"
-                          data-toggle="buttons"
-                        >
+                        <div class="btn-group btn-group-toggle" data-toggle="buttons">
                           {% set sizes = item.sizes|split(', ') %} {% for size
                           in sizes %} {% if size == sizes[0] %}
-                          <label
-                            class="btn btn-outline-secondary active"
-                            onclick="radioChange({{ item | json_encode }}, '{{ size }}')"
-                          >
-                            <input
-                              type="radio"
-                              name="{{ item.name }}"
-                              id="{{ item.name }}{{ size }}"
-                              value="{{ size }}"
-                              autocomplete="off"
-                              checked
-                            />{{ size }}</input>
+                          <label class="btn btn-outline-secondary active"
+                            onclick="radioChange({{ item | json_encode }}, '{{ size }}')">
+                            <input type="radio" name="{{ item.name }}" id="{{ item.name }}{{ size }}" value="{{ size }}"
+                              autocomplete="off" checked />{{ size }}</input>
                           </label>
                           {% else %}
-                          <label
-                            class="btn btn-outline-secondary"
-                            onclick="radioChange({{ item | json_encode }}, '{{ size }}')"
-                          >
-                            <input
-                              type="radio"
-                              name="{{ item.name }}"
-                              id="{{ item.name }}{{ size }}"
-                              value="{{ size }}"
-                              autocomplete="off"
-                            />{{ size }}</input>
+                          <label class="btn btn-outline-secondary"
+                            onclick="radioChange({{ item | json_encode }}, '{{ size }}')">
+                            <input type="radio" name="{{ item.name }}" id="{{ item.name }}{{ size }}" value="{{ size }}"
+                              autocomplete="off" />{{ size }}</input>
                           </label>
                           {% endif %}
                           {% endfor %}
@@ -97,7 +47,7 @@
                   <div class="container-fluid">
                     $<span id="{{ item.name }}">{{ item.sprice }}</span>
                     <script>
-                      radioChange({{ item|json_encode|raw }}, '{{ sizes[0] }}');
+                      radioChange({{ item| json_encode | raw }}, '{{ sizes[0] }}');
                     </script>
                   </div>
                 </div>
