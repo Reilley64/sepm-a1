@@ -1,9 +1,10 @@
-{% extends './templates/base.html.twig' %} {% block content %}
+{% extends './templates/base.html.twig' %}
+{% block content %}
 <div class="container">
   <h1 class="page-header text-center text-uppercase">{{ pageHeader }}</h1>
-  {% block items %}
   <div class="row">
-    {% for item in menu %} {% if item.stock == true %}
+    {% for item in menu %}
+    {% if item.stock == true %}
     <div class="col-sm-6 col-md-4 col-lg-3 pt-1 pb-1">
       <div class="card h-100 text-center">
         <img src="./assets/images/{{ item.name }}.jpg" class="card-img-top" />
@@ -62,8 +63,8 @@
         </form>
       </div>
     </div>
-    {% endif %} {% endfor %}
+    {% endif %}
+    {% endfor %}
   </div>
-  {% endblock %}
 </div>
 {% endblock %}
