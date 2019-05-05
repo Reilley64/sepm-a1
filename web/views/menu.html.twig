@@ -1,0 +1,70 @@
+{% extends './templates/base.html.twig' %}
+{% block content %}
+<div class="container">
+  <h1 class="page-header text-center text-uppercase">{{ pageHeader }}</h1>
+  <div class="row">
+    {% for item in menu %}
+    {% if item.stock == true %}
+    <div class="col-sm-6 col-md-4 col-lg-3 pt-1 pb-1">
+      <div class="card h-100 text-center">
+        <img src="./assets/images/{{ item.name }}.jpg" class="card-img-top" />
+        <form onsubmit="addItem({{ item | json_encode }}); return false;">
+          <div class="form-group">
+            <div class="card-body">
+              <h5 class="card-title text-uppercase">{{ item.name }}</h5>
+              <div class="card-text">
+                {% if item.sizes != null %}
+                <div class="row">
+                  <div class="col">
+                    <div class="row-fluid">
+                      <div class="col">
+                        <div class="btn-group btn-group-toggle" data-toggle="buttons">
+                          {% set sizes = item.sizes|split(', ') %} {% for size
+                          in sizes %} {% if size == sizes[0] %}
+                          <label class="btn btn-outline-secondary active"
+                            onclick="radioChange({{ item | json_encode }}, '{{ size }}')">
+                            <input type="radio" name="{{ item.name }}" id="{{ item.name }}{{ size }}" value="{{ size }}"
+                              autocomplete="off" checked />{{ size }}</input>
+                          </label>
+                          {% else %}
+                          <label class="btn btn-outline-secondary"
+                            onclick="radioChange({{ item | json_encode }}, '{{ size }}')">
+                            <input type="radio" name="{{ item.name }}" id="{{ item.name }}{{ size }}" value="{{ size }}"
+                              autocomplete="off" />{{ size }}</input>
+                          </label>
+                          {% endif %}
+                          {% endfor %}
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              {% endif %}
+            </div>
+            <div class="card-footer">
+              <div class="row">
+                <div class="col d-flex align-items-center">
+                  <div class="container-fluid">
+                    $<span id="{{ item.name }}">{{ item.sprice }}</span>
+                    <script>
+                      radioChange({{ item| json_encode | raw }}, '{{ sizes[0] }}');
+                    </script>
+                  </div>
+                </div>
+                <div class="col d-flex align-items-center">
+                  <button type="submit" class="btn btn-primary btn-block">
+                    <i class="fa fa-cart-plus" aria-hidden="true"></i>
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </form>
+      </div>
+    </div>
+    {% endif %}
+    {% endfor %}
+  </div>
+</div>
+{% endblock %}
