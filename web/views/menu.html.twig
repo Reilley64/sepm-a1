@@ -1,8 +1,7 @@
 {% extends './templates/base.html.twig' %}
 {% block content %}
     <div class="container">
-        {% set header = file|split('/') %}
-        <h1 class="page-header text-center text-uppercase">{{ header[2] }}</h1>
+        <h1 class="page-header text-center text-uppercase">{{ pageHeader }}</h1>
         <div class="row">
             {% for item in menu %}
                 {% if item.stock == true %}
@@ -47,17 +46,19 @@
                                                     </div>
                                                 </div>
                                             </div>
+                                            {% endif %}
                                         </div>
-                                        {% endif %}
                                     </div>
                                     <div class="card-footer">
                                         <div class="row">
                                             <div class="col d-flex align-items-center">
                                                 <div class="container-fluid">
                                                     $<span id="{{ item.name }}">{{ item.sprice }}</span>
+                                                    {% if item.sizes != null %}
                                                     <script>
                                                         radioChange({{ item|json_encode|raw }}, '{{ sizes[0] }}');
                                                     </script>
+                                                    {% endif %}
                                                 </div>
                                             </div>
                                             <div class="col d-flex align-items-center">

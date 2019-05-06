@@ -21,21 +21,22 @@
             var item = cart[x].toString().split(":");
             for (var y = 0; y < menu.length; ++y) {
                 if (item[0] === menu[y].id) {
+                    var itemsize = "";
                     var itemprice = menu[y].sprice;
 
                     switch (item[1]) {
                         case "S":
-                            var itemsize = "small";
+                            itemsize = "small";
                             itemprice = menu[y].sprice;
                             break;
 
                         case "M":
-                            var itemsize = "medium";
+                            itemsize = "medium";
                             itemprice = menu[y].mprice;
                             break;
 
                         case "L":
-                            var itemsize = "large";
+                            itemsize = "large";
                             itemprice = menu[y].lprice;
                             break;
                     }

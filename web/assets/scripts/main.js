@@ -9,10 +9,15 @@ function addItem(item) {
     }
 
     var radios = document.getElementsByName(item.name);
-    for (var i = 0; i < radios.length; i++) {
-        if (radios[i].checked) {
-            cart.push(item.id + ":" + radios[i].value);
+    if (radios[0] != null) {
+        console.log(radios);
+        for (var i = 0; i < radios.length; i++) {
+            if (radios[i].checked) {
+                cart.push(item.id + ":" + radios[i].value);
+            }
         }
+    } else {
+        cart.push(item.id);
     }
 
     localStorage.setItem("cart", JSON.stringify(cart));
