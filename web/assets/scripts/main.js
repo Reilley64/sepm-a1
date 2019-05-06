@@ -57,5 +57,8 @@ function radioChange(item, size) {
 }
 
 function updateCartLength() {
-    document.getElementById("cartlength").innerHTML = cart.length;
+    var elms = document.getElementsByClassName("cart-length");
+    for (var i = 0; i < elms.length; i++) {
+        elms[i].innerHTML = cart.length;
+    }
 }

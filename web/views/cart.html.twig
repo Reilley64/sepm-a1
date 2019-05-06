@@ -7,10 +7,12 @@
         <h1 class="page-header text-center text-uppercase">Cart</h1>
         <p class="lead">
             <small class="text-muted">
+                <span class="cart-length"></span>
                 <script>
+                    updateCartLength();
                     if (cart.length === 1) {
-                        document.write(cart.length + " item");
-                    } else document.write(cart.length + " items");
+                        document.write(" item");
+                    } else document.write(" items");
                 </script>
             </small>
         </p>
