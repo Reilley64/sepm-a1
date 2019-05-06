@@ -1,100 +1,106 @@
 <header class="header">
-  <nav class="navbar navbar-expand-lg navbar-light bg-light">
-    <a class="navbar-brand" href="../">Coffee Buzz</a>
-    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target=".navbar-collapse">
-      <span class="navbar-toggler-icon"></span>
-    </button>
-    <div class="navbar-collapse collapse">
-      <ul class="navbar-nav ml-auto">
-        {% if file == '/index.php/menu' or file == '/index.php/coffee' or file == '/index.php/tea' or file == '/index.php/food' %}
-        <li class="nav-item active dropdown">
-          <div class="btn-group">
-            <a class="nav-link active" href="/menu">Menu</a>
-            <a class="nav-link dropdown-toggle dropdown-toggle-split" href="#" id="navbarDropdown" role="button"
-              data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-              <span class="sr-only">Toggle Dropdown</span>
-            </a>
-            <div class="dropdown-menu dropdown-menu-right text-center text-uppercase" aria-labelledby="navbarDropdown">
-              {% if file == '/index.php/coffee' %}
-              <a class="dropdown-item active" href="/coffee">Coffee</a>
-              {% else %}
-              <a class="dropdown-item" href="/coffee">Coffee</a>
-              {% endif %}
-              {% if file == '/index.php/tea' %}
-              <a class="dropdown-item active" href="/tea">Tea</a>
-              {% else %}
-              <a class="dropdown-item" href="/tea">Tea</a>
-              {% endif %}
-              {% if file == '/index.php/food' %}
-              <a class="dropdown-item active" href="/food">Food</a>
-              {% else %}
-              <a class="dropdown-item" href="/food">Food</a>
-              {% endif %}
-            </div>
-          </div>
-        </li>
-        {% else %}
-        <li class="nav-item active dropdown">
-          <div class="btn-group">
-            <a class="nav-link" href="/menu">Menu</a>
-            <a class="nav-link dropdown-toggle dropdown-toggle-split" href="#" id="navbarDropdown" role="button"
-              data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-              <span class="sr-only">Toggle Dropdown</span>
-            </a>
-            <div class="dropdown-menu dropdown-menu-right text-center text-uppercase" aria-labelledby="navbarDropdown">
-              {% if file == '/index.php/coffee' %}
-              <a class="dropdown-item active" href="/coffee">Coffee</a>
-              {% else %}
-              <a class="dropdown-item" href="/coffee">Coffee</a>
-              {% endif %}
-              {% if file == '/index.php/tea' %}
-              <a class="dropdown-item active" href="/tea">Tea</a>
-              {% else %}
-              <a class="dropdown-item" href="/tea">Tea</a>
-              {% endif %}
-              {% if file == '/index.php/food' %}
-              <a class="dropdown-item active" href="/food">Food</a>
-              {% else %}
-              <a class="dropdown-item" href="/food">Food</a>
-              {% endif %}
-            </div>
-          </div>
-        </li>
-        {% endif %}
-        {% if file == '/index.php/about' %}
-        <li class="nav-item active">
-          <a class="nav-link" href="/about">About</a>
-        </li>
-        {% else %}
-        <li class="nav-item">
-          <a class="nav-link" href="/about">About</a>
-        </li>
-        {% endif %}
-        {% if file == '/index.php/contact' %}
-        <li class="nav-item active">
-          <a class="nav-link" href="/contact">Contact</a>
-        </li>
-        {% else %}
-        <li class="nav-item">
-          <a class="nav-link" href="/contact">Contact</a>
-        </li>
-        {% endif %}
-        {% if file == '/index.php/cart' %}
-        <li class="nav-item active">
-          <a class="nav-link" href="/cart">
-            <i class="fa fa-shopping-cart" aria-hidden="true"></i><sup><span id="cartlength"></span></sup>
-          </a>
-          <script>updateCartLength();</script>
-        </li>
-        {% else %}
-        <li class="nav-item">
-          <a class="nav-link" href="/cart">
-            <i class="fa fa-shopping-cart" aria-hidden="true"></i><sup><span id="cartlength"></span></sup>
-          </a>
-          <script>updateCartLength();</script>
-        </li>
-        {% endif %}
-      </ul>
-    </div>
-  </nav>
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <a class="navbar-brand" href="../">Coffee Buzz</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target=".navbar-collapse">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="navbar-collapse collapse">
+            <ul class="navbar-nav ml-auto">
+                {% if file == '/index.php/menu' or file == '/index.php/coffee' or file == '/index.php/tea' or file == '/index.php/food' %}
+                    <li class="nav-item active dropdown">
+                        <div class="btn-group">
+                            <a class="nav-link active" href="/menu">Menu</a>
+                            <a class="nav-link dropdown-toggle dropdown-toggle-split" href="#" id="navbarDropdown"
+                               role="button"
+                               data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                <span class="sr-only">Toggle Dropdown</span>
+                            </a>
+                            <div class="dropdown-menu dropdown-menu-right text-center text-uppercase"
+                                 aria-labelledby="navbarDropdown">
+                                {% if file == '/index.php/coffee' %}
+                                    <a class="dropdown-item active" href="/coffee">Coffee</a>
+                                {% else %}
+                                    <a class="dropdown-item" href="/coffee">Coffee</a>
+                                {% endif %}
+                                {% if file == '/index.php/tea' %}
+                                    <a class="dropdown-item active" href="/tea">Tea</a>
+                                {% else %}
+                                    <a class="dropdown-item" href="/tea">Tea</a>
+                                {% endif %}
+                                {% if file == '/index.php/food' %}
+                                    <a class="dropdown-item active" href="/food">Food</a>
+                                {% else %}
+                                    <a class="dropdown-item" href="/food">Food</a>
+                                {% endif %}
+                            </div>
+                        </div>
+                    </li>
+                {% else %}
+                    <li class="nav-item active dropdown">
+                        <div class="btn-group">
+                            <a class="nav-link" href="/menu">Menu</a>
+                            <a class="nav-link dropdown-toggle dropdown-toggle-split" href="#" id="navbarDropdown"
+                               role="button"
+                               data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                <span class="sr-only">Toggle Dropdown</span>
+                            </a>
+                            <div class="dropdown-menu dropdown-menu-right text-center text-uppercase"
+                                 aria-labelledby="navbarDropdown">
+                                {% if file == '/index.php/coffee' %}
+                                    <a class="dropdown-item active" href="/coffee">Coffee</a>
+                                {% else %}
+                                    <a class="dropdown-item" href="/coffee">Coffee</a>
+                                {% endif %}
+                                {% if file == '/index.php/tea' %}
+                                    <a class="dropdown-item active" href="/tea">Tea</a>
+                                {% else %}
+                                    <a class="dropdown-item" href="/tea">Tea</a>
+                                {% endif %}
+                                {% if file == '/index.php/food' %}
+                                    <a class="dropdown-item active" href="/food">Food</a>
+                                {% else %}
+                                    <a class="dropdown-item" href="/food">Food</a>
+                                {% endif %}
+                            </div>
+                        </div>
+                    </li>
+                {% endif %}
+                {% if file == '/index.php/about' %}
+                    <li class="nav-item active">
+                        <a class="nav-link" href="/about">About</a>
+                    </li>
+                {% else %}
+                    <li class="nav-item">
+                        <a class="nav-link" href="/about">About</a>
+                    </li>
+                {% endif %}
+                {% if file == '/index.php/contact' %}
+                    <li class="nav-item active">
+                        <a class="nav-link" href="/contact">Contact</a>
+                    </li>
+                {% else %}
+                    <li class="nav-item">
+                        <a class="nav-link" href="/contact">Contact</a>
+                    </li>
+                {% endif %}
+                {% if file == '/index.php/cart' %}
+                    <li class="nav-item active">
+                        <a class="nav-link" href="/cart">
+                            <i class="fa fa-shopping-cart" aria-hidden="true"></i><sup><span
+                                        id="cartlength"></span></sup>
+                        </a>
+                        <script>updateCartLength();</script>
+                    </li>
+                {% else %}
+                    <li class="nav-item">
+                        <a class="nav-link" href="/cart">
+                            <i class="fa fa-shopping-cart" aria-hidden="true"></i><sup><span
+                                        id="cartlength"></span></sup>
+                        </a>
+                        <script>updateCartLength();</script>
+                    </li>
+                {% endif %}
+            </ul>
+        </div>
+    </nav>
 </header>
