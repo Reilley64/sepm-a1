@@ -21,7 +21,7 @@ function addItem(item) {
 
 function clearItem(id) {
     for (var i = 0; i < cart.length; i++) {
-        if (cart[i] == id) {
+        if (cart[i] === id) {
             cart.splice(i, 1);
             break;
         }

@@ -8,7 +8,7 @@
         <p class="lead">
             <small class="text-muted">
                 <script>
-                    if (cart.length == 1) {
+                    if (cart.length === 1) {
                         document.write(cart.length + " item");
                     } else document.write(cart.length + " items");
                 </script>
@@ -17,10 +17,10 @@
         <div id="cart"></div>
     </div>
     <script>
-        for (x = 0; x < cart.length; ++x) {
+        for (var x = 0; x < cart.length; ++x) {
             var item = cart[x].toString().split(":");
-            for (y = 0; y < menu.length; ++y) {
-                if (item[0] == menu[y].id) {
+            for (var y = 0; y < menu.length; ++y) {
+                if (item[0] === menu[y].id) {
                     var itemprice = menu[y].sprice;
 
                     switch (item[1]) {
@@ -44,7 +44,7 @@
                     <div class='card mt-1 mb-1'>
                         <div class='row no-gutters'>
                             <div class='col-3 col-md-2 col-lg-1'>
-                                <img src='./assets/images/${menu[y].name}.jpg' class='card-img h-100 of-cover'>
+                                <img src='./assets/images/${menu[y].name}.jpg' alt='${menu[y].name}' class='card-img h-100 of-cover'>
                             </div>
                             <div class='col d-flex align-items-center'>
                                 <div class='card-body'>
