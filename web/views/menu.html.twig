@@ -1,7 +1,8 @@
 {% extends './templates/base.html.twig' %}
 {% block content %}
     <div class="container">
-        <h1 class="page-header text-center text-uppercase">{{ pageHeader }}</h1>
+        {% set header = file|split('/') %}
+        <h1 class="page-header text-center text-uppercase">{{ header[2] }}</h1>
         <div class="row">
             {% for item in menu %}
                 {% if item.stock == true %}
