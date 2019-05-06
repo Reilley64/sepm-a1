@@ -32,7 +32,7 @@ $app->get('/food', function () use ($app) {
 $app->get('/menu', function () use ($app) {
     $database = new Database();
     $data = $database->select("SELECT * FROM menu ORDER BY name;");
-    return $app['twig']->render('menu.html.twig', ["file" => $_SERVER['PHP_SELF'], "title" => "Menu Menu - ", "menu" => $data]);
+    return $app['twig']->render('menu.html.twig', ["file" => $_SERVER['PHP_SELF'], "title" => "Menu - ", "menu" => $data]);
 });
 
 $app->get('/tea', function () use ($app) {
