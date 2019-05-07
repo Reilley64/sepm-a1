@@ -24,10 +24,13 @@
             </div>
         </div>
         <div class="row mt-2 mb-1">
-            <div class="col d-flex align-items-center">
-                $<span class="cart-price"></span>
+            <div class="col"></div>
+            <div class="col-3 d-flex align-items-center text-center">
+                <script>
+                    if (cart.length >= 1) document.write("<div class='container-fluid'>$<span class='cart-price'></span></div>");
+                </script>
             </div>
-            <div class="col-3">
+            <div class="col-3 d-flex align-items-center">
                 <script>
                     if (cart.length >= 1) document.write("<button type='button' class='btn btn-primary btn-block'>Checkout</button>");
                 </script>
@@ -68,7 +71,7 @@
                     <div class='card mt-1 mb-1'>
                         <div class='row no-gutters'>
                             <div class='col-3 col-md-2 col-lg-1'>
-                                <img src='./assets/images/${menu[y].name}.jpg' alt='${menu[y].name}' class='card-img h-100 of-cover'>
+                                <a href='/item/${menu[y].id}'><img src='/assets/images/${menu[y].name}.jpg' alt='${menu[y].name}' class='card-img h-100 of-cover'></a>
                             </div>
                             <div class='col d-flex align-items-center'>
                                 <div class='card-body'>

@@ -1,12 +1,126 @@
 {% extends './templates/base.html.twig' %}
 {% block content %}
-    <div class="container">
+    <div class="container pt-4">
         <div class="row">
             <div class="col">
-                <img src="./assets/images/{{ item[0].name }}.jpg" alt="{{ item[0].name }}" class="img-fluid"/>
+                <form onsubmit="addItem({{ item|json_encode }}); return false;">
+                    <div class="row">
+                        <div class="col">
+                            <div class="row">
+                                <div class="col">
+                                    <h2 class="text-capitalize">{{ item.name }}</h2>
+                                    <p class="lead">
+                                        {{ item.description }}
+                                    </p>
+                                </div>
+                            </div>
+                            {% if item.size != null %}
+                                <div class="row">
+                                    <div class="col">
+                                        <h3>Sizes</h3>
+                                        <div class="btn-group btn-group-toggle mt-0 mb-3" data-toggle="buttons">
+                                            {% set sizes = item.sizes|split(', ') %}
+                                            {% for size in sizes %}
+                                                {% if size == sizes[0] %}
+                                                    <label class="btn btn-outline-secondary active"
+                                                           onclick="radioChange({{ item|json_encode }}, '{{ size }}')">
+                                                        <input type="radio"
+                                                               name="{{ item.name }}"
+                                                               id="{{ item.name }}{{ size }}"
+                                                               value="{{ size }}"
+                                                               autocomplete="off"
+                                                               checked/>{{ size }}
+                                                    </label>
+                                                {% else %}
+                                                    <label class="btn btn-outline-secondary"
+                                                           onclick="radioChange({{ item|json_encode }}, '{{ size }}')">
+                                                        <input type="radio"
+                                                               name="{{ item.name }}"
+                                                               id="{{ item.name }}{{ size }}"
+                                                               value="{{ size }}"
+                                                               autocomplete="off"/>{{ size }}
+                                                    </label>
+                                                {% endif %}
+                                            {% endfor %}
+                                        </div>
+                                    </div>
+                                </div>
+                            {% endif %}
+                            <div class="row">
+                                <div class="col">
+                                    <h3>Nutritional Info</h3>
+                                    <div class="row mt-0 mb-3">
+                                        {% set nutrition = item.nutrition|split(', ') %}
+                                        <div class="col">
+                                            <table class="table">
+                                                <tbody>
+                                                <tr>
+                                                    <th>Energy (kJ)</th>
+                                                    <td>{{ nutrition[0] }}</td>
+                                                </tr>
+                                                <tr>
+                                                    <th>Energy (Cal)</th>
+                                                    <td>{{ nutrition[1] }}</td>
+                                                </tr>
+                                                <tr>
+                                                    <th>Protein (g)</th>
+                                                    <td>{{ nutrition[2] }}</td>
+                                                </tr>
+                                                <tr>
+                                                    <th>Fat, total (g)</th>
+                                                    <td>{{ nutrition[3] }}</td>
+                                                </tr>
+                                                </tbody>
+                                            </table>
+                                        </div>
+                                        <div class="col">
+                                            <table class="table">
+                                                <tbody>
+                                                <tr>
+                                                    <th>Saturated (g)</th>
+                                                    <td>{{ nutrition[4] }}</td>
+                                                </tr>
+                                                <tr>
+                                                    <th>Carbohydrate (g)</th>
+                                                    <td>{{ nutrition[5] }}</td>
+                                                </tr>
+                                                <tr>
+                                                    <th>Sugars (g)</th>
+                                                    <td>{{ nutrition[6] }}</td>
+                                                </tr>
+                                                <tr>
+                                                    <th>Sodium (g)</th>
+                                                    <td>{{ nutrition[7] }}</td>
+                                                </tr>
+                                                </tbody>
+                                            </table>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col d-flex align-items-center text-center">
+                                    <div class="container-fluid">
+                                        $<span id="{{ item.name }}">{{ item.sprice }}</span>
+                                        {% if item.sizes != null %}
+                                            <script>
+                                                radioChange({{ item|json_encode|raw }}, '{{ sizes[0] }}');
+                                            </script>
+                                        {% endif %}
+                                    </div>
+                                </div>
+                                <div class="col d-flex align-items-center">
+                                    <button type="submit" class="btn btn-primary btn-block">
+                                        <i class="fa fa-cart-plus" aria-hidden="true"></i>
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </form>
             </div>
             <div class="col">
-                <h2 class="text-capitalize">{{ item[0].name }}</h2>
+                <img src="/assets/images/{{ item.name }}.jpg" alt="{{ item.name }}" class="img-fluid item-image h-100"/>
             </div>
         </div>
     </div>

@@ -16,6 +16,10 @@
     margin-bottom: 0 !important;
 }
 
+.item-image {
+    object-fit: cover;
+}
+
 .navbar-brand,
 .nav-link {
     text-transform: uppercase;
