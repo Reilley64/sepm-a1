@@ -1,0 +1,13 @@
+{% extends './templates/base.html.twig' %}
+{% block content %}
+    <div class="container">
+        <div class="row">
+            <div class="col">
+                <img src="./assets/images/{{ item[0].name }}.jpg" alt="{{ item[0].name }}" class="img-fluid"/>
+            </div>
+            <div class="col">
+                <h2 class="text-capitalize">{{ item[0].name }}</h2>
+            </div>
+        </div>
+    </div>
+{% endblock %}

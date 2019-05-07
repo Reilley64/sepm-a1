@@ -23,6 +23,12 @@ $app->get('/contact', function () use ($app) {
     return $app['twig']->render('contact.html.twig', ["title" => "Contact"]);
 });
 
+$app->get('/item/{id}', function ($id) use ($app) {
+    $database = new Database();
+    $data = $database->select("SELECT * FROM menu WHERE id = '" . $id . "';");
+    return $app['twig']->render('item.html.twig', ["title" => ucfirst($data[0]->name), "item" => $data]);
+});
+
 $app->get('/food', function () use ($app) {
     $database = new Database();
     $data = $database->select("SELECT * FROM menu WHERE type = 'FOOD' ORDER BY name;");
