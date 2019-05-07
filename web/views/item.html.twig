@@ -2,7 +2,7 @@
 {% block content %}
     <div class="container pt-4">
         <div class="row">
-            <div class="col">
+            <div class="col-12 order-last col-lg-6 order-lg-first mt-1 mb-1">
                 <form onsubmit="addItem({{ item|json_encode }}); return false;">
                     <div class="row">
                         <div class="col">
@@ -14,7 +14,7 @@
                                     </p>
                                 </div>
                             </div>
-                            {% if item.size != null %}
+                            {% if item.sizes != null %}
                                 <div class="row">
                                     <div class="col">
                                         <h3>Sizes</h3>
@@ -119,8 +119,8 @@
                     </div>
                 </form>
             </div>
-            <div class="col">
-                <img src="/assets/images/{{ item.name }}.jpg" alt="{{ item.name }}" class="img-fluid item-image h-100"/>
+            <div class="col-12 order-first col-lg-6 order-lg-last mt-1 mb-1">
+                <img src="/assets/images/{{ item.name }}.jpg" alt="{{ item.name }}" class="img-fluid item-image h-100 w-100"/>
             </div>
         </div>
     </div>
