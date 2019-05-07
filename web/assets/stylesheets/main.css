@@ -1,40 +1,45 @@
 .btn-group a {
-  padding-right: 0.25rem !important;
+    padding-right: 0.25rem !important;
+}
+
+.cart {
+    height: 25rem !important;
+    max-height: 25rem !important;
 }
 
 .footer {
-  margin-top: auto;
-  padding: 1rem 0;
+    margin-top: auto;
+    padding: 1rem 0;
 }
 
 .form-group {
-  margin-bottom: 0 !important;
+    margin-bottom: 0 !important;
 }
 
 .navbar-brand,
 .nav-link {
-  text-transform: uppercase;
+    text-transform: uppercase;
 }
 
 .of-cover {
-  object-fit: cover;
+    object-fit: cover;
 }
 
 .page-header {
-  padding-bottom: 0.5rem !important;
-  margin-top: 1.5rem !important;
-  margin-bottom: 0.5rem !important;
-  border-bottom: 1px solid #dee2e6 !important;
+    padding-bottom: 0.5rem !important;
+    margin-top: 1.5rem !important;
+    margin-bottom: 0.5rem !important;
+    border-bottom: 1px solid #dee2e6 !important;
 }
 
 body {
-  display: flex;
-  -ms-flex-direction: column;
-  flex-direction: column;
-  height: 100vh;
+    display: flex;
+    -ms-flex-direction: column;
+    flex-direction: column;
+    height: 100vh;
 }
 
 main {
-  -ms-flex-negative: 0;
-  flex-shrink: 0;
+    -ms-flex-negative: 0;
+    flex-shrink: 0;
 }

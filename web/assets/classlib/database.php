@@ -1,4 +1,5 @@
 <?php
+
 class Database
 {
     private $connection;
@@ -10,7 +11,7 @@ class Database
             'b6f2dc62df28b0',
             'fa6c774d',
             'heroku_2d9257028881513'
-    );
+        );
 
         if ($this->connection->connect_error) {
             die("Connection failed: " . $this->connection->connect_error);

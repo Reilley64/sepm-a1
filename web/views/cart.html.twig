@@ -12,9 +12,7 @@
                         <span class="cart-length"></span>
                         <script>
                             updateCartLength();
-                            if (cart.length === 1) {
-                                document.write(" item");
-                            } else document.write(" items");
+                            if (cart.length === 1) document.write(" item"); else document.write(" items");
                         </script>
                     </small>
                 </p>
@@ -22,7 +20,7 @@
         </div>
         <div class="row mt-1 mb-1">
             <div class="col">
-                <div id="cart" class="overflow-auto" style="height: 40rem !important; max-height: 40rem !important;"></div>
+                <div id="cart" class="cart overflow-auto"></div>
             </div>
         </div>
         <div class="row mt-2 mb-1">
@@ -65,7 +63,6 @@
                     }
 
                     cartprice += Number(itemprice);
-                    console.log()
 
                     document.getElementById("cart").innerHTML += `
                     <div class='card mt-1 mb-1'>
