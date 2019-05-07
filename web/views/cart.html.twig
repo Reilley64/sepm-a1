@@ -4,23 +4,44 @@
         var menu = {{ menu|json_encode|raw }};
     </script>
     <div class="container">
-        <h1 class="page-header text-center text-uppercase">Cart</h1>
-        <p class="lead">
-            <small class="text-muted">
-                <span class="cart-length"></span>
+        <div class="row mt-1 mb-1">
+            <div class="col">
+                <h1 class="page-header text-center text-uppercase">Cart</h1>
+                <p class="lead">
+                    <small class="text-muted">
+                        <span class="cart-length"></span>
+                        <script>
+                            updateCartLength();
+                            if (cart.length === 1) {
+                                document.write(" item");
+                            } else document.write(" items");
+                        </script>
+                    </small>
+                </p>
+            </div>
+        </div>
+        <div class="row mt-1 mb-1">
+            <div class="col">
+                <div id="cart" class="overflow-auto" style="height: 40rem !important; max-height: 40rem !important;"></div>
+            </div>
+        </div>
+        <div class="row mt-2 mb-1">
+            <div class="col d-flex align-items-center">
+                $<span class="cart-price"></span>
+            </div>
+            <div class="col-3">
                 <script>
-                    updateCartLength();
-                    if (cart.length === 1) {
-                        document.write(" item");
-                    } else document.write(" items");
+                    if (cart.length >= 1) document.write("<button type='button' class='btn btn-primary btn-block'>Checkout</button>");
                 </script>
-            </small>
-        </p>
-        <div id="cart"></div>
+            </div>
+        </div>
     </div>
     <script>
+        var cartprice = 0;
         for (var x = 0; x < cart.length; ++x) {
+
             var item = cart[x].toString().split(":");
+
             for (var y = 0; y < menu.length; ++y) {
                 if (item[0] === menu[y].id) {
                     var itemsize = "";
@@ -42,6 +63,9 @@
                             itemprice = menu[y].lprice;
                             break;
                     }
+
+                    cartprice += Number(itemprice);
+                    console.log()
 
                     document.getElementById("cart").innerHTML += `
                     <div class='card mt-1 mb-1'>
@@ -66,5 +90,7 @@
                 }
             }
         }
+
+        updateCartPrice(cartprice.toFixed(2));
     </script>
 {% endblock %}

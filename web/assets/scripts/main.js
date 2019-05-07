@@ -62,3 +62,10 @@ function updateCartLength() {
         elms[i].innerHTML = cart.length;
     }
 }
+
+function updateCartPrice(cartPrice) {
+    var elms = document.getElementsByClassName("cart-price");
+    for (var i = 0; i < elms.length; i++) {
+        elms[i].innerHTML = cartPrice;
+    }
+}
