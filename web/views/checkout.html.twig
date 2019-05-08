@@ -1,0 +1,78 @@
+{% extends './templates/base.html.twig' %}
+{% block content %}
+    <div class="container">
+        <h1 class="page-header text-center text-uppercase">Checkout</h1>
+        <div class="container">
+            <form onsubmit="<!-- Submit Function -->">
+                <div class="form-group">
+                    <div class="row mt-3 mb-1">
+                        <div class="col">
+                            <label for="card-number">Card Number</label>
+                            <input type="text" class="form-control" id="card-number" placeholder="Valid Card Number">
+                        </div>
+                    </div>
+                    <div class="row mt-1 mb-1">
+                        <div class="col">
+                            <label for="expiry-date">Expiry Date</label>
+                            <div class="row">
+                                <div class="col">
+                                    <input type="text" class="form-control" id="expiry-date" placeholder="MM">
+                                </div>
+                                <div class="col">
+                                    <input type="text" class="form-control" id="expiry-date" placeholder="YY">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col">
+                            <label for="cv-number">CV Number</label>
+                            <input type="text" class="form-control" id="cv-number" placeholder="CV">
+                        </div>
+                    </div>
+                    <div class="row mt-3 mb-1">
+                        <div class="col-6 d-flex align-items-center text-center">
+                            <div class='container-fluid'>$<span class='cart-price'></span></div>
+                            <script>
+                                var menu = {{ menu|json_encode|raw }};
+                                var cartprice = 0;
+
+                                for (var x = 0; x < cart.length; ++x) {
+
+                                    var item = cart[x].toString().split(":");
+
+                                    for (var y = 0; y < menu.length; ++y) {
+                                        if (item[0] === menu[y].id) {
+                                            var itemprice = menu[y].sprice;
+
+                                            switch (item[1]) {
+                                                case "S":
+                                                    itemprice = menu[y].sprice;
+                                                    break;
+
+                                                case "M":
+                                                    itemprice = menu[y].mprice;
+                                                    break;
+
+                                                case "L":
+                                                    itemprice = menu[y].lprice;
+                                                    break;
+                                            }
+
+                                            cartprice += Number(itemprice);
+                                        }
+                                    }
+                                }
+
+                                updateCartPrice(cartprice.toFixed(2));
+                            </script>
+                        </div>
+                        <div class="col-6 d-flex align-items-center">
+                            <button type="submit" class="btn btn-primary btn-block text-uppercase font-weight-bold">
+                                Pay
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+{% endblock %}
