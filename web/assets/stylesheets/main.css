@@ -1,3 +1,11 @@
+.bg-img {
+    background-image: linear-gradient(to bottom, rgba(255, 255, 255, 0.8) 0, rgba(255, 255, 255, 0.8) 100%), url('/assets/images/index.jpg'); /*TODO: Fix This*/
+    height: 100%;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
 .btn-group a {
     padding-right: 0.25rem !important;
 }
@@ -36,6 +44,15 @@
     border-bottom: 1px solid #dee2e6 !important;
 }
 
+.pb-10 {
+    padding-bottom: 15rem !important;
+}
+
+.text-center-justify {
+    text-align: justify;
+    text-align-last: center;
+}
+
 body {
     display: flex;
     -ms-flex-direction: column;
@@ -47,16 +64,3 @@ main {
     -ms-flex-negative: 0;
     flex-shrink: 0;
 }
-
-header.masthead{
-  padding-top:10rem;
-  padding-bottom:calc(35rem - 72px);
-  background:-webkit-gradient(from(rgba(255, 255, 255, 0.8)),to(rgba(255, 255, 255, 0.8))),url(https://images.squarespace-cdn.com/content/5b196ee731d4df831f0acadd/1552167195394-JQR8OQE2D58H2PQX5BAJ/4L8A6696.jpg?format=500w&content-type=image%2Fjpeg);
-  background:linear-gradient(rgba(255, 255, 255, 0.8) 0,rgb(47, 25, 10) 100%),url(https://images.squarespace-cdn.com/content/5b196ee731d4df831f0acadd/1552167195394-JQR8OQE2D58H2PQX5BAJ/4L8A6696.jpg?format=500w&content-type=image%2Fjpeg);
-  background-position:center;
-  background-size:cover
-}
-
-  .button {
-    background-color: #4CAF50;
-  }

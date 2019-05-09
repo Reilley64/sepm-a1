@@ -1,18 +1,138 @@
-{% extends './templates/base.html.twig' %}
+{% extends '/templates/base-index.html.twig' %}
 {% block content %}
-
-  <header class="masthead">
-    <div class="container h-100">
-      <div class="row h-100 align-items-center justify-content-center text-center">
-        <div class="col-lg-10 align-self-end">
-          <h1 class="text-uppercase text-black font-weight-bold">Your Favorite Spot for your coffee cravings</h1>
-          <hr class="divider my-4">
-        </div>
-        <div class="col-lg-8 align-self-baseline">
-          <p class="text-white-75 font-weight-bold mb-5">Order from our range of sweet and savoury dishes along with our award winning coffee here at 
-          Coffee Buzz blah blah blah food is good we are good this is good yayaya. Check out our menu below and get your Buzz! xd</p>
-          <a class="btn font-weight-bold"href="menu">See Our Menu</a>
-        </div>
-  </header>
-
+    <div class="bg-img">
+        <header class="header">
+            <nav class="navbar navbar-expand-lg navbar-light bg-transparent">
+                <a class="navbar-brand" href="../">Coffee Buzz</a>
+                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target=".navbar-collapse">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="navbar-collapse collapse">
+                    <ul class="navbar-nav ml-auto">
+                        {% if title == "Menu" or title == "Coffee Menu" or title == "Tea Menu" or title == "Food Menu" %}
+                            <li class="nav-item active dropdown">
+                                <div class="btn-group">
+                                    <a class="nav-link active" href="/menu">Menu</a>
+                                    <a class="nav-link dropdown-toggle dropdown-toggle-split" href="#"
+                                       id="navbarDropdown"
+                                       role="button"
+                                       data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                        <span class="sr-only">Toggle Dropdown</span>
+                                    </a>
+                                    <div class="dropdown-menu dropdown-menu-right text-center text-uppercase"
+                                         aria-labelledby="navbarDropdown">
+                                        {% if title == "Coffee Menu" %}
+                                            <a class="dropdown-item active" href="/menu/coffee">Coffee</a>
+                                        {% else %}
+                                            <a class="dropdown-item" href="/menu/coffee">Coffee</a>
+                                        {% endif %}
+                                        {% if title == "Tea Menu" %}
+                                            <a class="dropdown-item active" href="/menu/tea">Tea</a>
+                                        {% else %}
+                                            <a class="dropdown-item" href="/menu/tea">Tea</a>
+                                        {% endif %}
+                                        {% if title == "Food Menu" %}
+                                            <a class="dropdown-item active" href="/menu/food">Food</a>
+                                        {% else %}
+                                            <a class="dropdown-item" href="/menu/food">Food</a>
+                                        {% endif %}
+                                    </div>
+                                </div>
+                            </li>
+                        {% else %}
+                            <li class="nav-item active dropdown">
+                                <div class="btn-group">
+                                    <a class="nav-link" href="/menu">Menu</a>
+                                    <a class="nav-link dropdown-toggle dropdown-toggle-split" href="#"
+                                       id="navbarDropdown"
+                                       role="button"
+                                       data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                        <span class="sr-only">Toggle Dropdown</span>
+                                    </a>
+                                    <div class="dropdown-menu dropdown-menu-right text-center text-uppercase"
+                                         aria-labelledby="navbarDropdown">
+                                        {% if title == "Coffee Menu" %}
+                                            <a class="dropdown-item active" href="/menu/coffee">Coffee</a>
+                                        {% else %}
+                                            <a class="dropdown-item" href="/menu/coffee">Coffee</a>
+                                        {% endif %}
+                                        {% if title == "Tea Menu" %}
+                                            <a class="dropdown-item active" href="/menu/tea">Tea</a>
+                                        {% else %}
+                                            <a class="dropdown-item" href="/menu/tea">Tea</a>
+                                        {% endif %}
+                                        {% if title == "Food Menu" %}
+                                            <a class="dropdown-item active" href="/menu/food">Food</a>
+                                        {% else %}
+                                            <a class="dropdown-item" href="/menu/food">Food</a>
+                                        {% endif %}
+                                    </div>
+                                </div>
+                            </li>
+                        {% endif %}
+                        {% if title == "About" %}
+                            <li class="nav-item active">
+                                <a class="nav-link" href="/about">About</a>
+                            </li>
+                        {% else %}
+                            <li class="nav-item">
+                                <a class="nav-link" href="/about">About</a>
+                            </li>
+                        {% endif %}
+                        {% if title == "Contact" %}
+                            <li class="nav-item active">
+                                <a class="nav-link" href="/contact">Contact</a>
+                            </li>
+                        {% else %}
+                            <li class="nav-item">
+                                <a class="nav-link" href="/contact">Contact</a>
+                            </li>
+                        {% endif %}
+                        {% if title == "Cart" %}
+                            <li class="nav-item active">
+                                <a class="nav-link" href="/cart">
+                                    <i class="fa fa-shopping-cart" aria-hidden="true"></i><sup><span
+                                                class="cart-length"></span></sup>
+                                </a>
+                                <script>updateCartLength();</script>
+                            </li>
+                        {% else %}
+                            <li class="nav-item">
+                                <a class="nav-link" href="/cart">
+                                    <i class="fa fa-shopping-cart" aria-hidden="true"></i><sup><span
+                                                class="cart-length"></span></sup>
+                                </a>
+                                <script>updateCartLength();</script>
+                            </li>
+                        {% endif %}
+                    </ul>
+                </div>
+            </nav>
+        </header>
+        <main role="main" class="h-100">
+            <div class="container h-100">
+                <div class="row h-100">
+                    <div class="col d-flex align-items-center text-center pb-10">
+                        <div class="container-fluid">
+                            <div class="row">
+                                <div class="col">
+                                    <h1 class="text-uppercase page-header text-dark font-weight-bold">Your Favorite
+                                        Spot for your coffee cravings</h1>
+                                    <p class="lead text-center-justify">
+                                        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
+                                        incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis
+                                        nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+                                        Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu
+                                        fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in
+                                        culpa qui officia deserunt mollit anim id est laborum.
+                                    </p>
+                                    <button type="button" class="btn btn-outline-dark btn-lg" onclick="window.location.href='/menu';">Menu</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
 {% endblock %}
