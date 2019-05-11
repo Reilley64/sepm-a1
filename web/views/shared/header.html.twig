@@ -6,98 +6,39 @@
         </button>
         <div class="navbar-collapse collapse">
             <ul class="navbar-nav ml-auto">
-                {% if title == "Menu" or title == "Coffee Menu" or title == "Tea Menu" or title == "Food Menu" %}
-                    <li class="nav-item active dropdown">
-                        <div class="btn-group">
-                            <a class="nav-link active" href="/menu">Menu</a>
-                            <a class="nav-link dropdown-toggle dropdown-toggle-split" href="#" id="navbarDropdown"
-                               role="button"
-                               data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                <span class="sr-only">Toggle Dropdown</span>
-                            </a>
-                            <div class="dropdown-menu dropdown-menu-right text-center text-uppercase"
-                                 aria-labelledby="navbarDropdown">
-                                {% if title == "Coffee Menu" %}
-                                    <a class="dropdown-item active" href="/menu/coffee">Coffee</a>
-                                {% else %}
-                                    <a class="dropdown-item" href="/menu/coffee">Coffee</a>
-                                {% endif %}
-                                {% if title == "Tea Menu" %}
-                                    <a class="dropdown-item active" href="/menu/tea">Tea</a>
-                                {% else %}
-                                    <a class="dropdown-item" href="/menu/tea">Tea</a>
-                                {% endif %}
-                                {% if title == "Food Menu" %}
-                                    <a class="dropdown-item active" href="/menu/food">Food</a>
-                                {% else %}
-                                    <a class="dropdown-item" href="/menu/food">Food</a>
-                                {% endif %}
-                            </div>
-                        </div>
-                    </li>
-                {% else %}
-                    <li class="nav-item active dropdown">
-                        <div class="btn-group">
-                            <a class="nav-link" href="/menu">Menu</a>
-                            <a class="nav-link dropdown-toggle dropdown-toggle-split" href="#" id="navbarDropdown"
-                               role="button"
-                               data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                <span class="sr-only">Toggle Dropdown</span>
-                            </a>
-                            <div class="dropdown-menu dropdown-menu-right text-center text-uppercase"
-                                 aria-labelledby="navbarDropdown">
-                                {% if title == "Coffee Menu" %}
-                                    <a class="dropdown-item active" href="/menu/coffee">Coffee</a>
-                                {% else %}
-                                    <a class="dropdown-item" href="/menu/coffee">Coffee</a>
-                                {% endif %}
-                                {% if title == "Tea Menu" %}
-                                    <a class="dropdown-item active" href="/menu/tea">Tea</a>
-                                {% else %}
-                                    <a class="dropdown-item" href="/menu/tea">Tea</a>
-                                {% endif %}
-                                {% if title == "Food Menu" %}
-                                    <a class="dropdown-item active" href="/menu/food">Food</a>
-                                {% else %}
-                                    <a class="dropdown-item" href="/menu/food">Food</a>
-                                {% endif %}
-                            </div>
-                        </div>
-                    </li>
-                {% endif %}
-                {% if title == "About" %}
-                    <li class="nav-item active">
-                        <a class="nav-link" href="/about">About</a>
-                    </li>
-                {% else %}
-                    <li class="nav-item">
-                        <a class="nav-link" href="/about">About</a>
-                    </li>
-                {% endif %}
-                {% if title == "Contact" %}
-                    <li class="nav-item active">
-                        <a class="nav-link" href="/contact">Contact</a>
-                    </li>
-                {% else %}
-                    <li class="nav-item">
-                        <a class="nav-link" href="/contact">Contact</a>
-                    </li>
-                {% endif %}
-                {% if title == "Cart" %}
-                    <li class="nav-item active">
-                        <a class="nav-link" href="/cart">
-                            <i class="fa fa-shopping-cart" aria-hidden="true"></i><sup><span class="cart-length"></span></sup>
+                <li class="nav-item dropdown">
+                    <div class="btn-group">
+                        <a class="nav-link {% if title == "Menu" or title == "Coffee Menu" or title == "Tea Menu" or title == "Food Menu" %}active{% endif %}"
+                           href="/menu">Menu</a>
+                        <a class="nav-link dropdown-toggle dropdown-toggle-split" href="#" id="navbarDropdown"
+                           role="button"
+                           data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            <span class="sr-only">Toggle Dropdown</span>
                         </a>
-                        <script>updateCartLength();</script>
-                    </li>
-                {% else %}
-                    <li class="nav-item">
-                        <a class="nav-link" href="/cart">
-                            <i class="fa fa-shopping-cart" aria-hidden="true"></i><sup><span class="cart-length"></span></sup>
-                        </a>
-                        <script>updateCartLength();</script>
-                    </li>
-                {% endif %}
+                        <div class="dropdown-menu dropdown-menu-right text-center text-uppercase"
+                             aria-labelledby="navbarDropdown">
+                            <a class="dropdown-item {% if title == "Coffee Menu" %}active{% endif %}"
+                               href="/menu/coffee">Coffee</a>
+                            <a class="dropdown-item {% if title == "Tea Menu" %}active{% endif %}"
+                               href="/menu/tea">Tea</a>
+                            <a class="dropdown-item {% if title == "Food Menu" %}active{% endif %}"
+                               href="/menu/food">Food</a>
+                        </div>
+                    </div>
+                </li>
+                <li class="nav-item {% if title == "About" %}active{% endif %}">
+                    <a class="nav-link" href="/about">About</a>
+                </li>
+                <li class="nav-item {% if title == "Contact" %}active{% endif %}">
+                    <a class="nav-link" href="/contact">Contact</a>
+                </li>
+                <li class="nav-item {% if title == "Cart" %}active{% endif %}">
+                    <a class="nav-link" href="/cart">
+                        <i class="fa fa-shopping-cart" aria-hidden="true"></i><sup><span
+                                    class="cart-length"></span></sup>
+                    </a>
+                    <script>updateCartLength();</script>
+                </li>
             </ul>
         </div>
     </nav>
