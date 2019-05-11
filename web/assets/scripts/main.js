@@ -3,7 +3,7 @@ if (cart == null) {
     cart = [];
 }
 
-function addItem(item) {
+function addItemToCart(item) {
     if (typeof item == "string") {
         item = JSON.parse(item);
     }
@@ -24,18 +24,6 @@ function addItem(item) {
     updateCartLength();
 }
 
-function clearItem(id) {
-    for (var i = 0; i < cart.length; i++) {
-        if (cart[i] === id) {
-            cart.splice(i, 1);
-            break;
-        }
-    }
-
-    localStorage.setItem("cart", JSON.stringify(cart));
-    location.reload();
-}
-
 function radioChange(item, size) {
     if (typeof item == "string") {
         item = JSON.parse(item);
@@ -54,6 +42,18 @@ function radioChange(item, size) {
             document.getElementById(item.name).innerHTML = item.lprice;
             break;
     }
+}
+
+function removeItemFromCart(id) {
+    for (var i = 0; i < cart.length; i++) {
+        if (cart[i] === id) {
+            cart.splice(i, 1);
+            break;
+        }
+    }
+
+    localStorage.setItem("cart", JSON.stringify(cart));
+    location.reload();
 }
 
 function updateCartLength() {

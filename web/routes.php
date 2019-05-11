@@ -1,6 +1,11 @@
 <?php
+
+use Symfony\Component\HttpFoundation\Request;
+
 $app->get('/', function () use ($app) {
-    return $app['twig']->render('index.html.twig');
+    return $app['twig']->render('index.html.twig', [
+        "title" => null,
+    ]);
 });
 
 $app->get('/about', function () use ($app) {
@@ -18,13 +23,26 @@ $app->get('/cart', function () use ($app) {
     ]);
 });
 
-$app->get('/menu/coffee', function () use ($app) {
+$app->get('/cart/checkout', function () use ($app) {
     $database = new Database();
-    $data = $database->select("SELECT * FROM menu WHERE type = 'COFFEE' ORDER BY name;");
-    return $app['twig']->render('menu.html.twig', [
-        "title" => "Coffee Menu",
+    $data = $database->selectAll("menu");
+    return $app['twig']->render('checkout.html.twig', [
+        "title" => "Checkout",
         "menu" => $data,
     ]);
+});
+
+$app->post('/cart/checkout', function (Request $request) use ($app) {
+    $items = $request->get("cart");
+    $customer = $request->get("name");
+    $database = new Database();
+    $id = $database->select("SELECT id FROM orders ORDER BY id DESC;");
+    $id = $id[0]->id + 1;
+    $result = $database->insert("INSERT INTO orders (id, items, customer) VALUES (" . $id . ", '" . $items . "', '" . $customer . "');");
+    if ($result) {
+        return $app->redirect('/');
+    }
+    /*TODO: Else statement*/
 });
 
 $app->get('/contact', function () use ($app) {
@@ -42,20 +60,29 @@ $app->get('/item/{id}', function ($id) use ($app) {
     ]);
 });
 
-$app->get('/menu/food', function () use ($app) {
-    $database = new Database();
-    $data = $database->select("SELECT * FROM menu WHERE type = 'FOOD' ORDER BY name;");
-    return $app['twig']->render('menu.html.twig', [
-        "title" => "Food Menu",
-        "menu" => $data,
-    ]);
-});
-
 $app->get('/menu', function () use ($app) {
     $database = new Database();
     $data = $database->select("SELECT * FROM menu ORDER BY name;");
     return $app['twig']->render('menu.html.twig', [
         "title" => "Menu",
+        "menu" => $data,
+    ]);
+});
+
+$app->get('/menu/coffee', function () use ($app) {
+    $database = new Database();
+    $data = $database->select("SELECT * FROM menu WHERE type = 'COFFEE' ORDER BY name;");
+    return $app['twig']->render('menu.html.twig', [
+        "title" => "Coffee Menu",
+        "menu" => $data,
+    ]);
+});
+
+$app->get('/menu/food', function () use ($app) {
+    $database = new Database();
+    $data = $database->select("SELECT * FROM menu WHERE type = 'FOOD' ORDER BY name;");
+    return $app['twig']->render('menu.html.twig', [
+        "title" => "Food Menu",
         "menu" => $data,
     ]);
 });
