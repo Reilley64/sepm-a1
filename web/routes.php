@@ -1,6 +1,11 @@
 <?php
+
+use Symfony\Component\HttpFoundation\Request;
+
 $app->get('/', function () use ($app) {
-    return $app['twig']->render('index.html.twig');
+    return $app['twig']->render('index.html.twig', [
+        "title" => null,
+    ]);
 });
 
 $app->get('/about', function () use ($app) {
@@ -25,6 +30,19 @@ $app->get('/cart/checkout', function () use ($app) {
         "title" => "Checkout",
         "menu" => $data,
     ]);
+});
+
+$app->post('/cart/checkout', function (Request $request) use ($app) {
+    $items = $request->get("cart");
+    $customer = $request->get("name");
+    $database = new Database();
+    $id = $database->select("SELECT id FROM orders ORDER BY id DESC;");
+    $id = $id[0]->id + 1;
+    $result = $database->insert("INSERT INTO orders (id, items, customer) VALUES (" . $id . ", '" . $items . "', '" . $customer . "');");
+    if ($result) {
+        return $app->redirect('/');
+    }
+    /*TODO: Else statement*/
 });
 
 $app->get('/contact', function () use ($app) {
