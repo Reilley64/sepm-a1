@@ -45,16 +45,6 @@ $app->post('/cart/checkout', function (Request $request) use ($app) {
     /*TODO: Else statement*/
 });
 
-$app->get('/orderconfirm', function() use ($app) {
-    $database = new Database();
-    $data = $database->selectAll("menu");
-    return $app['twig']->render('orderconfirm.html.twig', [
-        "title" => "Order Confirmation",
-        "menu" => $data,
-        "order" => $data[0],
-    ]);
-});
-
 $app->get('/contact', function () use ($app) {
     return $app['twig']->render('contact.html.twig', [
         "title" => "Contact",
