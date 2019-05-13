@@ -18,11 +18,6 @@ $app->get('/staff/login', function () use ($app) {
     ]);
 });
 
-$app->get('/staff/logout', function () use ($app) {
-    $_SESSION['loggedIn'] = false;
-    return "Logged out";
-});
-
 $app->post('/staff/login', function (Request $request) use ($app) {
     $staffid = $request->get("staffid");
     $password = $request->get("password");
@@ -34,4 +29,10 @@ $app->post('/staff/login', function (Request $request) use ($app) {
     } else {
         return $password;
     }
+});
+
+
+$app->get('/staff/logout', function () use ($app) {
+    $_SESSION['loggedIn'] = false;
+    return "Logged out";
 });

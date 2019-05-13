@@ -40,7 +40,11 @@ $app->post('/cart/checkout', function (Request $request) use ($app) {
     $id = $id[0]->id + 1;
     $result = $database->insert("INSERT INTO orders (id, items, customer) VALUES ($id , $items, $customer);");
     if ($result) {
-        return $app->redirect('/');
+        $order = $database->select("SELECT id FROM orders WHERE id = $id");
+        return $app->redirect('/orderconfirm.html.twig', [
+            "title" => "Order Confirm",
+            "order" => $order[0],
+        ]);
     }
     /*TODO: Else statement*/
 });
