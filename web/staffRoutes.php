@@ -4,8 +4,13 @@ use Symfony\Component\HttpFoundation\Request;
 
 $app->get('/staff', function () use ($app) {
     if ($_SESSION['loggedIn'] != false) {
+        $database = new Database();
+        $ref = $database->select("SELECT * FROM menu ORDER BY name;");
+        $data = $database->select("SELECT * FROM orders WHERE done = FALSE ");
         return $app['twig']->render('orders.html.twig', [
             "title" => "Orders",
+            "menu" => $ref,
+            "orders" => $data,
         ]);
     } else {
         return $app->redirect('/staff/login');
