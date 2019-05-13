@@ -27,6 +27,15 @@ class Database
         }
     }
 
+    public function update($sql)
+    {
+        if ($this->connection->query($sql) === true) {
+            return true;
+        } else {
+            return $this->connection->error;
+        }
+    }
+
     public function insert($sql)
     {
         if ($this->connection->query($sql) === true) {

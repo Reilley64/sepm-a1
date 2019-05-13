@@ -40,3 +40,11 @@ $app->post('/staff/login', function (Request $request) use ($app) {
         return $password;
     }
 });
+
+$app->post('/staff', function (Request $request) use ($app) {
+    $orderid = $request->get("orderid");
+    $database = new Database();
+    $data = $database->update("UPDATE orders SET done = true WHERE id = $orderid;");
+    return $app->redirect('/staff');
+
+});
