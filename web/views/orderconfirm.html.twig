@@ -1,0 +1,74 @@
+{% extends './templates/base.html.twig' %}
+{% block content %}
+        <script>
+        var menu = {{ menu|json_encode|raw }};
+    </script>
+    <div class="container">
+        <div class="row mt-1 mb-1">
+            <div class="col">
+                <h1 class="page-header text-center text-uppercase">Order Confirmation</h1>
+                <h3 class="text-success text-center"> Thank you for your order <h3/>
+                <h5 class="text-success text-center"> You will receive a notification once your order is ready<h5/>
+                <h5 class="text-success text-center"> Your order number is: #{{ order.id }}<h5/>
+            </div>
+        </div>
+        <div class="row mt-1 mb-1">
+            <div class="col">
+                <div id="cart" class="cart overflow-auto"></div>
+            </div>
+        </div>
+                <script>
+                    if (cart.length >= 1) document.write("<div class='container-fluid'>Order Total = $<span class='cart-price'></span></div>");
+                </script>
+    <script>
+        var cartprice = 0;
+        for (var x = 0; x < cart.length; ++x) {
+
+            var item = cart[x].toString().split(":");
+
+            for (var y = 0; y < menu.length; ++y) {
+                if (item[0] === menu[y].id) {
+                    var itemsize = "";
+                    var itemprice = menu[y].sprice;
+
+                    switch (item[1]) {
+                        case "S":
+                            itemsize = "small";
+                            itemprice = menu[y].sprice;
+                            break;
+
+                        case "M":
+                            itemsize = "medium";
+                            itemprice = menu[y].mprice;
+                            break;
+
+                        case "L":
+                            itemsize = "large";
+                            itemprice = menu[y].lprice;
+                            break;
+                    }
+
+                    cartprice += Number(itemprice);
+
+                    document.getElementById("cart").innerHTML += `
+                    <div class='card mt-1 mb-1'>
+                        <div class='row no-gutters'>
+                            <div class='col-3 col-md-2 col-lg-1'>
+                                <a href='/item/${menu[y].id}'><img src='/assets/images/${menu[y].name}.jpg' alt='${menu[y].name}' class='card-img h-100 of-cover'></a>
+                            </div>
+                            <div class='col d-flex align-items-center'>
+                                <div class='card-body'>
+                                    <h5 class='card-title text-uppercase'>${itemsize} ${menu[y].name}</h5>
+                                    <h6 class='card-subtitle text-muted'>$${itemprice}</h6>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    `;
+                }
+            }
+        }
+
+        updateCartPrice(cartprice.toFixed(2));
+    </script>
+{% endblock %}
