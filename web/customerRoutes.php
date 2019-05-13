@@ -102,3 +102,14 @@ $app->get('/menu/tea', function () use ($app) {
         "menu" => $data,
     ]);
 });
+
+$app->get('/notifcation', function () use ($app) {
+    $id = $_GET['id'];
+
+    $database = new Database();
+    $data = $database->select("SELECT done FROM orders WHERE id = $id;");
+
+    if ($data[0]->done == true) {
+        return "Your order is complete!";
+    }
+});

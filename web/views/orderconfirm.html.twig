@@ -1,10 +1,26 @@
 {% extends './templates/base.html.twig' %}
 {% block content %}
     <script>
+        function checkOrder() {
+            console.log("1");
+            xmlhttp = new XMLHttpRequest();
+            xmlhttp.onreadystatechange = function () {
+                console.log("2")
+                if (this.readyState == 4 && this.status == 200) {
+                    console.log("3");
+                    document.getElementById("alert").innerHTML = this.responseText;
+                }
+            }
+            xmlhttp.open("GET", "/notification?id=" + {{ order.id }}, true);
+            xmlhttp.send();
+        }
+
         clearCart();
         updateCartLength();
         var menu = {{ menu|json_encode|raw }};
     </script>
+    <div id="alert" class="alert alert-success" role="alert">
+    </div>
     <div class="container">
         <div class="row mt-1 mb-1">
             <div class="col">
@@ -58,4 +74,7 @@
                 </div>
             </div>
         </div>
+        <button class="btn btn-primary btn-block" onclick="checkOrder();">
+            Check Order
+        </button>
 {% endblock %}
