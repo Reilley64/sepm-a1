@@ -22,14 +22,13 @@
                             <tr>
                                 <td colspan="2"></td>
                                 <td>{{ menuItem.name }}</td>
-                                {% if components|length >1%}
+                                {% if components|length >1 %}
                                     <td>Size : {{ components[1] }}</td>
-                                    {% endif %}
+                                {% endif %}
                             </tr>
-                        {% endif %}"
-
-                        {% endfor %}
-                {%  endfor %}
+                        {% endif %}
+                    {% endfor %}
+                {% endfor %}
             {% endfor %}
         </table>
     </div>
