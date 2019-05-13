@@ -24,6 +24,11 @@ function addItemToCart(item) {
     updateCartLength();
 }
 
+function clearCart() {
+    cart = [];
+    localStorage.setItem("cart", JSON.stringify(cart));
+}
+
 function radioChange(item, size) {
     if (typeof item == "string") {
         item = JSON.parse(item);
