@@ -103,7 +103,7 @@ $app->get('/menu/tea', function () use ($app) {
     ]);
 });
 
-$app->get('/notifcation', function () use ($app) {
+$app->get('/notification', function () use ($app) {
     $id = $_GET['id'];
 
     $database = new Database();

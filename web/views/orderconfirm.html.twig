@@ -2,12 +2,9 @@
 {% block content %}
     <script>
         function checkOrder() {
-            console.log("1");
             xmlhttp = new XMLHttpRequest();
             xmlhttp.onreadystatechange = function () {
-                console.log("2")
                 if (this.readyState == 4 && this.status == 200) {
-                    console.log("3");
                     document.getElementById("alert").innerHTML = this.responseText;
                 }
             }
