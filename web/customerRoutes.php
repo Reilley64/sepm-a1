@@ -47,8 +47,9 @@ $app->post('/cart/checkout', function (Request $request) use ($app) {
             "order" => $order[0],
             "menu" => $menu,
         ]);
+    } else {
+        return $result;
     }
-    /*TODO: Else statement*/
 });
 
 $app->get('/contact', function () use ($app) {
