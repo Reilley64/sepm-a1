@@ -38,9 +38,13 @@ $app->post('/cart/checkout', function (Request $request) use ($app) {
     $database = new Database();
     $id = $database->select("SELECT id FROM orders ORDER BY id DESC;");
     $id = $id[0]->id + 1;
-    $result = $database->insert("INSERT INTO orders (id, items, customer) VALUES (" . $id . ", '" . $items . "', '" . $customer . "');");
+    $result = $database->insert("INSERT INTO orders (id, items, customer) VALUES ($id , $items, $customer);");
     if ($result) {
-        return $app->redirect('/');
+        $order = $database->select("SELECT id FROM orders WHERE id = $id");
+        return $app->redirect('/orderconfirm.html.twig', [
+            "title" => "Order Confirm",
+            "order" => $order[0],
+        ]);
     }
     /*TODO: Else statement*/
 });
@@ -53,7 +57,7 @@ $app->get('/contact', function () use ($app) {
 
 $app->get('/item/{id}', function ($id) use ($app) {
     $database = new Database();
-    $data = $database->select("SELECT * FROM menu WHERE id = '" . $id . "';");
+    $data = $database->select("SELECT * FROM menu WHERE id = $id;");
     return $app['twig']->render('item.html.twig', [
         "title" => ucfirst($data[0]->name),
         "item" => $data[0],

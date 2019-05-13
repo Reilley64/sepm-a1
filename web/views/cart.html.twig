@@ -35,6 +35,11 @@
                     if (cart.length >= 1) document.write("<button type='button' class='btn btn-primary btn-block text-uppercase font-weight-bold' onclick=\"window.location.href = '/cart/checkout';\">Checkout</button>");
                 </script>
             </div>
+            <div class="col-4 col-md-3 d-flex align-items-center">
+                <script>
+                    if (cart.length >= 1) document.write("<button type='button' class='btn btn-primary btn-block text-uppercase font-weight-bold' onclick='clearCart(); location.reload();'>Clear</button>");
+                </script>
+            </div>
         </div>
     </div>
     <script>
