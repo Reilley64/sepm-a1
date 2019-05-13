@@ -1,20 +1,23 @@
 {% extends './templates/base-staff.html.twig' %}
 {% block content %}
-    <div class="container h-100">
-        <div class="row justify-content-center align-items-center h-100">
-            <div class="col col-sm-6 col-md-6 col-lg-4 col-xl-3">
-                <form method="post">
-                    <div class="form-group">
-                        <input type="text" class="form-control" id="staffid" name="staffid" placeholder="Staff ID">
-                    </div>
-                    <div class="form-group">
-                        <input type="password" class="form-control" id="password" name="password" placeholder="Password">
-                    </div>
-                    <div class="form-group">
-                        <button class="btn btn-primary btn-block">Sign In</button>
-                    </div>
-                </form>
+    <main role="main" class="h-100">
+        <div class="container h-100">
+            <div class="row justify-content-center align-items-center h-100">
+                <div class="col col-sm-6 col-md-6 col-lg-4 col-xl-3">
+                    <form method="post">
+                        <div class="form-group">
+                            <input type="text" class="form-control" id="staffid" name="staffid" placeholder="Staff ID">
+                        </div>
+                        <div class="form-group">
+                            <input type="password" class="form-control" id="password" name="password"
+                                   placeholder="Password">
+                        </div>
+                        <div class="form-group">
+                            <button class="btn btn-primary btn-block">Sign In</button>
+                        </div>
+                    </form>
+                </div>
             </div>
         </div>
-    </div>
+    </main>
 {% endblock %}

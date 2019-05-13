@@ -19,13 +19,13 @@ $app->get('/staff', function () use ($app) {
 
 $app->get('/staff/login', function () use ($app) {
     return $app['twig']->render('login.html.twig', [
-        "title" => null,
+        "title" => "Staff Login",
     ]);
 });
 
 $app->get('/staff/logout', function () use ($app) {
     $_SESSION['loggedIn'] = false;
-    return "Logged out";
+    return $app->redirect('/staff/login');
 });
 
 $app->post('/staff/login', function (Request $request) use ($app) {
