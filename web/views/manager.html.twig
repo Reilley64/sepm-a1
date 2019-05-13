@@ -1,0 +1,101 @@
+{% extends './templates/base-staff.html.twig' %}
+{% block content %}
+    <div class="container">
+        <h1 class="page-header text-center text-uppercase">{{ title }}</h1>
+        <div class="row">
+            <div class="col-sm-6 col-md-6 col-lg-6 pt-1 pb-1">
+                <div class="card h-100 text-center">
+                    <div class="card-body" style="min-height: 111px !important;">
+                        <h5 class="card-title text-uppercase">Manage Stock</h5>
+                        <div class="card-text">
+                            <table style="width:100%">
+                                <tr>
+                                    <th>ID</th>
+                                    <th>Name</th>
+                                    <th>Available</th>
+                                </tr>
+                                {% for item in stock %}
+                                    <tr>
+                                        <form method="post">
+                                            <td>{{ item.id }}</td>
+                                            <td>{{ item.name }}</td>
+                                            <td>
+                                                <input type="hidden" class="form-control" id="itemid"
+                                                       value="{{ item.id }}" name="itemid">
+                                                <input type="hidden" class="form-control" id="itemstock"
+                                                       value="{{ item.stock }}" name="itemstock">
+                                                <button class="btn btn-primary btn-block
+                                                        {% if item.stock == false %} btn-danger {% endif %}{% if item.stock == true %} btn-success{% endif %}">
+                                                    {% if item.stock == false %} Out of Stock {% endif %}{% if item.stock == true %} In Stock {% endif %}
+                                                </button>
+                                            </td>
+                                        </form>
+                                    </tr>
+                                {% endfor %}
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-sm-6 col-md-6 col-lg-6 pt-1 pb-1">
+                <div class="card h-25 text-center pt-1 pb-1">
+                    <div class="card-body" style="min-height: 111px !important;">
+                        <h5 class="card-title text-uppercase">Add Staff Member</h5>
+                        <div class="card-text">
+                            <form method="post">
+                                <div class="form-group">
+                                    <input type="text" class="form-control" id="staffid" name="staffid"
+                                           placeholder="Staff ID">
+                                </div>
+                                <div class="form-group">
+                                    <input type="password" class="form-control" id="password" name="password"
+                                           placeholder="Password">
+                                </div>
+                                <div class="form-group">
+                                    <select class="form-control" name="title" id="title">
+                                        <option value="STAFF">Staff</option>
+                                        <option value="OWNER">Owner</option>
+                                        <option value="ADMIN">Admin</option>
+                                        <option value="MANAGER">Manager</option>
+                                    </select>
+                                </div>
+                                <div class="form-group">
+                                    <button class="btn btn-primary btn-block">Create</button>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="text-center pt-3 pb-3">
+                    <div class="card h-25 text-center pt-1 pb-1">
+                        <div class="card-body" style="min-height: 111px !important;">
+                            <h5 class="card-title text-uppercase">Manage Existing Staff</h5>
+                            <div class="card-text">
+                                <table style="width:100%">
+                                    <tr>
+                                        <th>ID</th>
+                                    </tr>
+                                    {% for member in staff %}
+                                        <tr>
+                                            <form method="post">
+                                                <td>{{ member.id }}</td>
+                                                <td>
+                                                    <input type="hidden" class="form-control" id="memberid"
+                                                           value="{{ member.id }}" name="memberid">
+                                                    <button class="btn btn-primary btn-block btn-danger">
+                                                        Remove
+                                                    </button>
+                                                </td>
+                                            </form>
+                                        </tr>
+                                    {% endfor %}
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}
