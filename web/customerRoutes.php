@@ -38,12 +38,14 @@ $app->post('/cart/checkout', function (Request $request) use ($app) {
     $database = new Database();
     $id = $database->select("SELECT id FROM orders ORDER BY id DESC;");
     $id = $id[0]->id + 1;
-    $result = $database->insert("INSERT INTO orders (id, items, customer) VALUES ($id , $items, $customer);");
+    $result = $database->insert("INSERT INTO orders (id, items, customer) VALUES ('$id' , '$items', '$customer');");
     if ($result) {
-        $order = $database->select("SELECT id FROM orders WHERE id = $id");
-        return $app->redirect('/orderconfirm.html.twig', [
-            "title" => "Order Confirm",
+        $order = $database->select("SELECT * FROM orders WHERE id = $id");
+        $menu = $database->selectAll("menu");
+        return $app['twig']->render('orderconfirm.html.twig', [
+            "title" => "Order Confirmation",
             "order" => $order[0],
+            "menu" => $menu,
         ]);
     }
     /*TODO: Else statement*/
