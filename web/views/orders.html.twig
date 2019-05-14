@@ -14,14 +14,15 @@
             <script>
                 var orders = {{ orders|json_encode|raw }};
 
-                /*TODO: Change this to run on all active orders*/
-                function updateOrderTime($id) {
-                    console.log("1");
-                    now = new Date();
-                    orderTime = new Date(orders[($id - 1)].time);
-                    diffMins = Math.round((((orderTime - now) % 86400000) % 3600000) / 60000) * -1;
-                    console.log(now + " " + orderTime);
-                    document.getElementById($id + "time").innerHTML = diffMins;
+                function updateOrderTime() {
+                    for (var x = 0; x < orders.length; ++x) {
+                        if (orders[x].done == false) {
+                            let now = new Date();
+                            let orderTime = new Date(orders[x].time);
+                            let diffMins = Math.round((((orderTime - now) % 86400000) % 3600000) / 60000) * -1;
+                            document.getElementById((x + 1) + "time").innerHTML = diffMins;
+                        }
+                    }
                 }
             </script>
             {% for order in orders %}
@@ -31,9 +32,6 @@
                             <td>{{ order.id }}</td>
                             <td>{{ order.customer }}</td>
                             <td><span id="{{ order.id }}time"></span> minutes</td>
-                            <script>
-                                setInterval(updateOrderTime("{{ order.id }}"), 1000);
-                            </script>
                             <td></td>
                             <td></td>
                             <td>
@@ -62,4 +60,7 @@
             {% endfor %}
         </table>
     </div>
+    <script>
+        var t = setInterval(updateOrderTime, 1000);
+    </script>
 {% endblock %}
