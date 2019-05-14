@@ -2,7 +2,7 @@
 {% block content %}
     <div class="container">
         <h1 class="page-header text-center text-uppercase">{{ title }}</h1>
-        <table style="width:100%">
+        <table class="table table-borderless table-sm">
             <tr>
                 <th>ID</th>
                 <th>Customer</th>
@@ -11,35 +11,54 @@
                 <th></th>
                 <th></th>
             </tr>
+            <script>
+                var orders = {{ orders|json_encode|raw }};
+
+                /*TODO: Change this to run on all active orders*/
+                function updateOrderTime($id) {
+                    console.log("1");
+                    now = new Date();
+                    orderTime = new Date(orders[($id - 1)].time);
+                    diffMins = Math.round((((orderTime - now) % 86400000) % 3600000) / 60000) * -1;
+                    console.log(now + " " + orderTime);
+                    document.getElementById($id + "time").innerHTML = diffMins;
+                }
+            </script>
             {% for order in orders %}
-                <tr>
-                    <form method="post">
-                    <td>{{ order.id }}</td>
-                    <td>{{ order.customer }}</td>
-                    <td>{{ order.time|time_diff }}</td>
-                        <td></td>
-                        <td></td>
-                        <td>
-                            <input type="hidden" class="form-control" id="orderid" value="{{ order.id }}" name="orderid">
-                            <button class="btn btn-primary btn-block">Completed</button>
-                        </td>
-                    </form>
-                </tr>
-                {% set items = order.items|replace({'[':"",']':"",'"':""})|split(',') %}
-                {% for item in items %}
-                    {% set components = item|split(':') %}
-                    {% for menuItem in menu %}
-                        {% if menuItem.id == components[0] %}
-                            <tr>
-                                <td colspan="3"></td>
-                                <td>{{ menuItem.name }}</td>
-                                {% if components|length >1 %}
-                                    <td>Size : {{ components[1] }}</td>
-                                {% endif %}
-                            </tr>
-                        {% endif %}
+                {% if order.done == false %}
+                    <tr>
+                        <form method="post">
+                            <td>{{ order.id }}</td>
+                            <td>{{ order.customer }}</td>
+                            <td><span id="{{ order.id }}time"></span> minutes</td>
+                            <script>
+                                setInterval(updateOrderTime("{{ order.id }}"), 1000);
+                            </script>
+                            <td></td>
+                            <td></td>
+                            <td>
+                                <input type="hidden" class="form-control" id="orderid" value="{{ order.id }}"
+                                       name="orderid">
+                                <button class="btn btn-primary btn-block">Completed</button>
+                            </td>
+                        </form>
+                    </tr>
+                    {% set items = order.items|replace({'[':"",']':"",'"':""})|split(',') %}
+                    {% for item in items %}
+                        {% set components = item|split(':') %}
+                        {% for menuItem in menu %}
+                            {% if menuItem.id == components[0] %}
+                                <tr>
+                                    <td colspan="3"></td>
+                                    <td>{{ menuItem.name }}</td>
+                                    {% if components|length >1 %}
+                                        <td>Size : {{ components[1] }}</td>
+                                    {% endif %}
+                                </tr>
+                            {% endif %}
+                        {% endfor %}
                     {% endfor %}
-                {% endfor %}
+                {% endif %}
             {% endfor %}
         </table>
     </div>

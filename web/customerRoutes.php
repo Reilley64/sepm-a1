@@ -110,6 +110,6 @@ $app->get('/notification', function () use ($app) {
     $data = $database->select("SELECT done FROM orders WHERE id = $id;");
 
     if ($data[0]->done == true) {
-        return "<div class='alert alert-success alert-dismissible fade show'>Your order is complete!<button type=\"button\" class=\"close\" data-dismiss=\"alert\" aria-label=\"Close\"><span aria-hidden=\"true\">&times;</span></button></div>";
+        return "<div class='alert alert-success alert-dismissible fade show'>Your order is ready!</div>";
     }
 });

@@ -22,7 +22,8 @@
             <div class="col">
                 <h1 class="page-header text-center text-uppercase">Order Confirmation</h1>
                 <h3 class="text-success text-center">Thank you for your order</h3>
-                <h5 class="text-success text-center">Leave this page open to receive a notification once your order is ready<br/>
+                <h5 class="text-success text-center">Leave this page open to receive a notification once your order is
+                    ready<br/>
                     Your order number is: #{{ order.id }}</h5>
             </div>
         </div>
@@ -73,8 +74,8 @@
         <script>
             (function myLoop(i) {
                 setTimeout(function () {
-                    checkOrder();          //  your code here
-                    if (--i) myLoop(i);      //  decrement i and call myLoop again if i > 0
+                    checkOrder();
+                    if (--i) myLoop(i);
                 }, 5000)
             })(2000);
         </script>
