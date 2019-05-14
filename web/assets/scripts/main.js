@@ -29,6 +29,11 @@ function clearCart() {
     localStorage.setItem("cart", JSON.stringify(cart));
 }
 
+Date.prototype.addHours = function(h) {
+    this.setTime(this.getTime() + (h*60*60*1000));
+    return this;
+}
+
 function getTimeDiff(datetime) {
     var datetime = typeof datetime !== 'undefined' ? datetime : "2014-01-01 01:02:03.123456";
 

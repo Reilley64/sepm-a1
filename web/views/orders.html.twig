@@ -18,8 +18,8 @@
                     for (var x = 0; x < orders.length; ++x) {
                         if (orders[x].done == false) {
                             let now = new Date();
-                            let orderTime = new Date(orders[x].time);
-                            let diffMins = Math.round((((orderTime - now) % 86400000) % 3600000) / 60000) * -1;
+                            let orderTime = new Date(orders[x].time).addHours(10);
+                            let diffMins = Math.floor(((now - orderTime)/1000)/60);
                             document.getElementById((x + 1) + "time").innerHTML = diffMins;
                         }
                     }
