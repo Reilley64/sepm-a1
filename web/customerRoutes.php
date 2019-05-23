@@ -16,10 +16,13 @@ $app->get('/about', function () use ($app) {
 
 $app->get('/cart', function () use ($app) {
     $database = new Database();
-    $data = $database->selectAll("menu");
+    $menu = $database->selectAll("menu");
+    $orders = $database->select("SELECT id FROM orders WHERE done=false");
+    $orderlength = count($orders);
     return $app['twig']->render('cart.html.twig', [
         "title" => "Cart",
-        "menu" => $data,
+        "menu" => $menu,
+        "orders" => $orderlength,
     ]);
 });
 

@@ -7,15 +7,22 @@
         <div class="row mt-1 mb-1">
             <div class="col">
                 <h1 class="page-header text-center text-uppercase">Cart</h1>
-                <p class="lead">
-                    <small class="text-muted">
-                        <span class="cart-length"></span>
-                        <script>
-                            updateCartLength();
-                            if (cart.length === 1) document.write(" item"); else document.write(" items");
-                        </script>
-                    </small>
-                </p>
+                <small class="text-muted">
+                    <div class="row">
+                        <div class="col-6">
+                            <span class="cart-length"></span>
+                            <script>
+                                updateCartLength();
+                                if (cart.length === 1) document.write(" item"); else document.write(" items");
+                            </script>
+
+                        </div>
+                        <div class="col-6">
+                            <span class="text-right"><div
+                                        class="container-fluid">There is {{ orders }} {% if orders == 1 %}order{% else %}orders{% endif %} in queue, your order will take approximately {{ 2 + (1 * orders) }} minutes</div></span>
+                        </div>
+                    </div>
+                </small>
             </div>
         </div>
         <div class="row mt-1 mb-1">
