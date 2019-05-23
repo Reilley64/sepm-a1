@@ -3,8 +3,20 @@
     <main role="main" class="text-center">
         <form class="form-signin" method="post">
             <h1 class="h3 mb-3 font-weight-normal">Please login</h1>
-            <input id="staffid" name="staffid" class="form-control" type="text" placeholder="Staff ID" required autofocus>
-            <input id="password" name="password" class="form-control" type="password"  placeholder="Password" required>
+            <div class="input-group">
+                <input id="staffid" name="staffid" class="form-control {% if error != null %}is-invalid{% endif %}"
+                       type="text" placeholder="Staff ID" required
+                       autofocus>
+            </div>
+            <div class="input-group mb-1">
+                <input id="password" name="password" class="form-control {% if error != null %}is-invalid{% endif %} mb-0"
+                       type="password" placeholder="Password" required>
+                {% if error != null %}
+                    <div class="invalid-feedback">
+                        {{ error }}
+                    </div>
+                {% endif %}
+            </div>
             <button class="btn btn-lg btn-primary btn-block" type="submit">Login</button>
         </form>
     </main>

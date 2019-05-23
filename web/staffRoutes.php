@@ -92,6 +92,7 @@ $app->post('/staff', function (Request $request) use ($app) {
 $app->get('/staff/login', function () use ($app) {
     return $app['twig']->render('login.html.twig', [
         "title" => "Staff Login",
+        "error" => null,
     ]);
 });
 
@@ -99,10 +100,20 @@ $app->post('/staff/login', function (Request $request) use ($app) {
     $staffid = $request->get("staffid");
     $password = $request->get("password");
     $database = new Database();
-    $data = $database->select("SELECT * FROM staff WHERE id = $staffid;");
-    if (password_verify($password, $data[0]->password)) {
+    $data = $database->select("SELECT * FROM staff WHERE id='$staffid';");
+    if (!isset($data[0])) {
+        return $app['twig']->render("login.html.twig", [
+            "title" => "Staff Login",
+            "error" => "Wrong username",
+        ]);
+    } else if (password_verify($password, $data[0]->password)) {
         $_SESSION['loggedIn'] = $staffid;
         return $app->redirect('/staff');
+    } else {
+        return $app['twig']->render("login.html.twig", [
+            "title" => "Staff Login",
+            "error" => "Wrong password",
+        ]);
     }
 });
 
