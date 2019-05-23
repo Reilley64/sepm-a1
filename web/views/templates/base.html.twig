@@ -1,10 +1,10 @@
 <!DOCTYPE html>
 <html lang="en">
-{% include('/shared/script.html.twig') %}
-{% include('/shared/head.html.twig') %}
-<body>
-{% include('/shared/header.html.twig') %}
-<main role="main">{% block content %}{% endblock %}</main>
-</body>
-
+    {% include('/shared/head.html.twig') %}
+    {% include('/shared/beforescript.html.twig') %}
+    <body>
+        {% include('/shared/header.html.twig') %}
+        <main role="main">{% block content %}{% endblock %}</main>
+    </body>
+    {% include('/shared/afterscript.html.twig') %}
 </html>

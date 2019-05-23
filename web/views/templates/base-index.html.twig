@@ -1,9 +1,9 @@
 <!DOCTYPE html>
 <html lang="en" style="height: 100%;">
-{% include('./shared/script.html.twig') %}
-{% include('./shared/head.html.twig') %}
-<body style="height: 100%; overflow: hidden;">
-{% block content %}{% endblock %}
-</body>
-
+    {% include('./shared/beforescript.html.twig') %}
+    {% include('./shared/head.html.twig') %}
+    <body style="height: 100%; overflow: hidden;">
+        {% block content %}{% endblock %}
+    </body>
+    {% include('/shared/afterscript.html.twig') %}
 </html>

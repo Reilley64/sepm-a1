@@ -10,7 +10,6 @@ function addItemToCart(item) {
 
     var radios = document.getElementsByName(item.name);
     if (radios[0] != null) {
-        console.log(radios);
         for (var i = 0; i < radios.length; i++) {
             if (radios[i].checked) {
                 cart.push(item.id + ":" + radios[i].value);
